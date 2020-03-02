@@ -1,0 +1,21 @@
+let a = "x"
+let heheSuperZmienna = -5
+let ulala=12.56
+let dupa_sraka = "35"
+
+const B = 55.4
+const PI = 3.14159
+const NEGPI = 3.1415
+const uhuh = "hhh"
+
+$ some comment here
+$ some more comments
+
+let teraz_patrz = "o matko"
+
+func a {
+    let u = 12
+    const bc = -35.7
+}
+
+print("some debug")
