@@ -8,5 +8,5 @@ Jezyki formalne i kompilatory - projekt
 3. [GNU make](https://www.gnu.org/software/make/) - (optional to run Makefiles)
 
 ## Makefile
-`gui` - compiles ANTLR and runs grun on file `now.cash`
-`node` - compiles ANTLR with JS target and runs `index.js` with `now.cash` file to interpret
+* `gui` - compiles ANTLR and runs grun on file `now.cash`
+* `node` - compiles ANTLR with JS target and runs `index.js` with `now.cash` file to interpret
