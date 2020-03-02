@@ -1,11 +1,25 @@
 const antlr = require('antlr4')
-const CashLexer = require('./CashLexer').CashLexer
-const CashParser = require('./CashParser').CashParser
-const CashListener = require('./CashListener').CashListener
-const CashVisitor = require('./CashVisitor').CashVisitor
+const CashLexer = require('./parser/CashLexer').CashLexer
+const CashParser = require('./parser/CashParser').CashParser
+const CashListener = require('./parser/CashListener').CashListener
+const CashVisitor = require('./parser/CashVisitor').CashVisitor
 const fs = require('fs')
 
-let code = fs.readFileSync('now.cash', 'utf8')
+const inputArgs = process.argv.slice(2);
+let code;
+
+if(inputArgs.length > 0) {
+  if(fs.existsSync(inputArgs[0])) {
+    code = fs.readFileSync(inputArgs[0], 'utf8');
+  } else {
+    console.error("Given file doesn't exist. Exit.");
+    process.exit(1);
+  }
+} else {
+  console.error("Usage: cash file-name.cash");
+  process.exit(1);
+}
+
 
 let inputStream = new antlr.InputStream(code);
 let lexer = new CashLexer(inputStream);
