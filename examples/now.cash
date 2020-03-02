@@ -1,21 +1,18 @@
-let a = "x"
-let heheSuperZmienna = -5
-let ulala=12.56
-let dupa_sraka = "35"
+let a = "huhuh hehe ja nie moge dziala XD"
 
-const B = 55.4
 const PI = 3.14159
-const NEGPI = 3.1415
-const uhuh = "hhh"
+const NEG_PI = -3.1415
+
+$PI = "try to overwrite"
 
 $ some comment here
 $ some more comments
 
-let teraz_patrz = "o matko"
+$let teraz_patrz = "o matko"
 
 func a {
     let u = 12
     const bc = -35.7
 }
-
-print("some debug")
+a = "trochę zmiana planów"
+print("some debug", a, NEG_PI)

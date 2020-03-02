@@ -2,10 +2,12 @@ grammar Cash ;
 
 program: (expr | COMMENT)*;
 
-expr : var_assignment | const_assignment | func_declaration | func_call;
+expr : var_assignment | const_assignment | func_declaration | func_call | assign_to_label;
 
 var_assignment : KW_LET LABEL OP_ASSIGN (STR_LIT | NUM_LIT);
 const_assignment : KW_CONST LABEL OP_ASSIGN (STR_LIT | NUM_LIT);
+
+assign_to_label : LABEL OP_ASSIGN (STR_LIT | NUM_LIT | LABEL);
 
 func_declaration : KW_FUNC LABEL L_BRACE expr* R_BRACE;
 func_call : LABEL L_PAR R_PAR

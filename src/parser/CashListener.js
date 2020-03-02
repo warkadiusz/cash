@@ -47,6 +47,15 @@ CashListener.prototype.exitConst_assignment = function(ctx) {
 };
 
 
+// Enter a parse tree produced by CashParser#assign_to_label.
+CashListener.prototype.enterAssign_to_label = function(ctx) {
+};
+
+// Exit a parse tree produced by CashParser#assign_to_label.
+CashListener.prototype.exitAssign_to_label = function(ctx) {
+};
+
+
 // Enter a parse tree produced by CashParser#func_declaration.
 CashListener.prototype.enterFunc_declaration = function(ctx) {
 };

@@ -36,6 +36,12 @@ CashVisitor.prototype.visitConst_assignment = function(ctx) {
 };
 
 
+// Visit a parse tree produced by CashParser#assign_to_label.
+CashVisitor.prototype.visitAssign_to_label = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by CashParser#func_declaration.
 CashVisitor.prototype.visitFunc_declaration = function(ctx) {
   return this.visitChildren(ctx);
