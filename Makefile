@@ -12,5 +12,5 @@ gui:
 	cd ${out_java_path} && $(grun) Cash program ../../examples/now.cash -gui
 
 node:
-	$(antlr) -Dlanguage=JavaScript -visitor -o ../src/parser Cash.g4
-	node src/index.js ../examples/now.cash
+	cd grammar/ && $(antlr) -Dlanguage=JavaScript -visitor -o ../src/parser Cash.g4
+	node src/cash.js examples/now.cash
