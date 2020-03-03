@@ -68,6 +68,14 @@ function strip_if_str(node) {
   return node.getText();
 }
 
+/**
+ * Evaluates expression tree starting from last element (highest priority)
+ * @param leaf
+ */
+function evaluate_expression_tree(leaf) {
+
+}
+
 function declare_var_or_const(data) {
   const is_assigning = data.children.length !== 4;
 

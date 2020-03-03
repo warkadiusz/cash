@@ -18,8 +18,8 @@ CashVisitor.prototype.visitProgram = function(ctx) {
 };
 
 
-// Visit a parse tree produced by CashParser#expr.
-CashVisitor.prototype.visitExpr = function(ctx) {
+// Visit a parse tree produced by CashParser#std_expr.
+CashVisitor.prototype.visitStd_expr = function(ctx) {
   return this.visitChildren(ctx);
 };
 
@@ -50,6 +50,12 @@ CashVisitor.prototype.visitFunc_declaration = function(ctx) {
 
 // Visit a parse tree produced by CashParser#func_call.
 CashVisitor.prototype.visitFunc_call = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by CashParser#expr.
+CashVisitor.prototype.visitExpr = function(ctx) {
   return this.visitChildren(ctx);
 };
 

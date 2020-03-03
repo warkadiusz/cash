@@ -1,17 +1,24 @@
 grammar Cash ;
 
-program: (expr | func_declaration | COMMENT)*;
+program: (std_expr | func_declaration | COMMENT)*;
 
-expr : var_assignment | const_assignment | func_call | assign_to_label;
+std_expr : var_assignment | const_assignment | func_call | assign_to_label;
 
-var_assignment : KW_LET LABEL OP_ASSIGN (STR_LIT | NUM_LIT);
-const_assignment : KW_CONST LABEL OP_ASSIGN (STR_LIT | NUM_LIT);
+var_assignment : KW_LET LABEL OP_ASSIGN expr;
+const_assignment : KW_CONST LABEL OP_ASSIGN expr;
 
-assign_to_label : LABEL OP_ASSIGN (STR_LIT | NUM_LIT | LABEL);
+assign_to_label : LABEL OP_ASSIGN expr;
 
-func_declaration : KW_FUNC LABEL L_BRACE expr* R_BRACE;
+func_declaration : KW_FUNC LABEL L_BRACE std_expr* R_BRACE;
 func_call : LABEL L_PAR R_PAR
-          | LABEL L_PAR ((STR_LIT | NUM_LIT | LABEL) ',')*(STR_LIT | NUM_LIT | LABEL) R_PAR;
+          | LABEL L_PAR ((expr) ',')* (expr) R_PAR;
+
+expr : expr OP_POW expr
+     |  expr  (OP_MULTIPLY | OP_DIVIDE)  expr
+     |  expr  (OP_PLUS | OP_SUB) expr
+     |  L_PAR expr R_PAR
+     |  (OP_PLUS | OP_SUB)* NUM_LIT
+     | STR_LIT | func_call | LABEL;
 
 fragment DIGIT : [0-9]+ ;
 
@@ -26,6 +33,7 @@ OP_PLUS: '+' ;
 OP_SUB: '-' ;
 OP_MULTIPLY: '*' ;
 OP_DIVIDE: '\\' ;
+OP_POW: '^^' ;
 OP_INCREMENT: '++' ;
 OP_DECREMENT: '--' ;
 
@@ -35,7 +43,6 @@ L_PAR: '(';
 R_PAR: ')';
 
 LABEL : [a-zA-Z] ([a-zA-Z_] | DIGIT)* ;
-
 
 STR_LIT : '"'.*?'"' ;
 NUM_LIT : DIGIT+ 

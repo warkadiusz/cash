@@ -20,12 +20,12 @@ CashListener.prototype.exitProgram = function(ctx) {
 };
 
 
-// Enter a parse tree produced by CashParser#expr.
-CashListener.prototype.enterExpr = function(ctx) {
+// Enter a parse tree produced by CashParser#std_expr.
+CashListener.prototype.enterStd_expr = function(ctx) {
 };
 
-// Exit a parse tree produced by CashParser#expr.
-CashListener.prototype.exitExpr = function(ctx) {
+// Exit a parse tree produced by CashParser#std_expr.
+CashListener.prototype.exitStd_expr = function(ctx) {
 };
 
 
@@ -71,6 +71,15 @@ CashListener.prototype.enterFunc_call = function(ctx) {
 
 // Exit a parse tree produced by CashParser#func_call.
 CashListener.prototype.exitFunc_call = function(ctx) {
+};
+
+
+// Enter a parse tree produced by CashParser#expr.
+CashListener.prototype.enterExpr = function(ctx) {
+};
+
+// Exit a parse tree produced by CashParser#expr.
+CashListener.prototype.exitExpr = function(ctx) {
 };
 
 
