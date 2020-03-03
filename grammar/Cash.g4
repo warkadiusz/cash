@@ -1,8 +1,8 @@
 grammar Cash ;
 
-program: (expr | COMMENT)*;
+program: (expr | func_declaration | COMMENT)*;
 
-expr : var_assignment | const_assignment | func_declaration | func_call | assign_to_label;
+expr : var_assignment | const_assignment | func_call | assign_to_label;
 
 var_assignment : KW_LET LABEL OP_ASSIGN (STR_LIT | NUM_LIT);
 const_assignment : KW_CONST LABEL OP_ASSIGN (STR_LIT | NUM_LIT);
