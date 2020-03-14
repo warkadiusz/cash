@@ -17,7 +17,7 @@ expr : expr OP_POW expr
      |  expr  (OP_MULTIPLY | OP_DIVIDE)  expr
      |  expr  (OP_PLUS | OP_SUB) expr
      |  L_PAR expr R_PAR
-     |  (OP_PLUS | OP_SUB)* NUM_LIT
+     |  (OP_PLUS | OP_SUB)? NUM_LIT
      | STR_LIT | func_call | LABEL;
 
 fragment DIGIT : [0-9]+ ;
