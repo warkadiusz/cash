@@ -12,7 +12,7 @@ $PI = "try to overwrite"
 $ some comment here
 $ some more comments
 
-$let teraz_patrz = "o matko"
+$ let teraz_patrz = "o matko"
 
 func a {
     let u = 12
@@ -34,6 +34,9 @@ else {
     oooo = "bfbfb"
 }
 
+/$
+ $    comment block
+ $/
 while a == b
     if (oups < 2)
         const beng = 2

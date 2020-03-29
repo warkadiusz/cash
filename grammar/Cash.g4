@@ -1,11 +1,13 @@
 grammar Cash ;
 
-program: (statement | func_declaration | COMMENT)*;
+program: (statement | func_declaration | comment)*;
 
 statement : var_assignment | const_assignment | func_call | assign_to_label | if_statement | while_statement;
 
 var_assignment : KW_LET LABEL OP_ASSIGN expr;
 const_assignment : KW_CONST LABEL OP_ASSIGN expr;
+
+comment : COMMENT | BLOCK_COMMENT;
 
 assign_to_label : LABEL OP_ASSIGN expr;
 
@@ -72,5 +74,6 @@ NUM_LIT : DIGIT+
                 ; 
 
 COMMENT  :  '$' ~( '\r' | '\n' )* -> skip;
+BLOCK_COMMENT : '/$' .*? '$/' -> skip;
 WS : [ \t]+ -> skip;
 EOL : '\r'? '\n' -> skip;
