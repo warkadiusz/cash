@@ -1,15 +1,19 @@
 grammar Cash ;
 
-program: (statement | func_declaration | comment)*;
+program: (statement)*;
 
-statement : var_assignment | const_assignment | func_call | assign_to_label | if_statement | while_statement;
+statement :     var_assignment
+                | const_assignment
+                | if_statement
+                | while_statement
+                | func_declaration
+                | comment
+                | expr;
 
 var_assignment : KW_LET LABEL OP_ASSIGN expr;
 const_assignment : KW_CONST LABEL OP_ASSIGN expr;
 
 comment : COMMENT | BLOCK_COMMENT;
-
-assign_to_label : LABEL OP_ASSIGN expr;
 
 func_declaration : KW_FUNC LABEL L_BRACE statement* R_BRACE;
 func_call : LABEL L_PAR R_PAR
@@ -20,10 +24,13 @@ expr : expr OP_POW expr
      |  expr  op=(OP_PLUS | OP_SUB) expr
      |  L_PAR expr R_PAR
      |  (OP_PLUS | OP_SUB)? NUM_LIT
-     | STR_LIT | func_call | LABEL
+     | STR_LIT
+     | func_call
+     | LABEL
      | expr op=(OP_AND | OP_OR) expr
      | expr op=(OP_EQ | OP_GT | OP_GE | OP_LE | OP_LT) expr
      | (KW_TRUE | KW_FALSE)
+     | LABEL OP_ASSIGN expr
      ;
 
 statement_block : L_BRACE statement+ R_BRACE
