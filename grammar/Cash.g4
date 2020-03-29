@@ -4,6 +4,7 @@ program: (statement)*;
 
 statement :     var_assignment
                 | const_assignment
+                | assign_to_label
                 | if_statement
                 | while_statement
                 | func_declaration
@@ -12,6 +13,8 @@ statement :     var_assignment
 
 var_assignment : KW_LET LABEL OP_ASSIGN expr;
 const_assignment : KW_CONST LABEL OP_ASSIGN expr;
+
+assign_to_label : LABEL OP_ASSIGN expr;
 
 comment : COMMENT | BLOCK_COMMENT;
 
@@ -30,7 +33,6 @@ expr : expr OP_POW expr
      | expr op=(OP_AND | OP_OR) expr
      | expr op=(OP_EQ | OP_GT | OP_GE | OP_LE | OP_LT) expr
      | (KW_TRUE | KW_FALSE)
-     | LABEL OP_ASSIGN expr
      ;
 
 statement_block : L_BRACE statement+ R_BRACE
