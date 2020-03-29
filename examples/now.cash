@@ -21,4 +21,21 @@ func a {
 a = "trochę zmiana planów"
 asd = 3 + 0.14 - a() * 5 * 45 $comment that out
 let uszy = a() * -3.14
+
 print("some debug", a, NEG_PI)
+
+if (a >= b)
+    test3 = "b"
+else if a > b
+    let u = 3434
+else {
+    let ydw = 3.14
+    blabla = 66
+    oooo = "bfbfb"
+}
+
+while a == b
+    if (oups < 2)
+        const beng = 2
+
+if true print(beng)
