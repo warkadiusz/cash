@@ -14,3 +14,12 @@ gui:
 node:
 	cd grammar/ && $(antlr) -Dlanguage=JavaScript -visitor -o ../src/parser Cash.g4
 	node src/cash.js examples/now.cash
+
+tests:
+	@cd grammar/ && $(antlr) -Dlanguage=JavaScript -visitor -o ../src/parser Cash.g4
+	@cd src/tests && \
+	for testfile in ./*_test.js ; \
+	do \
+ 		echo "Executing test $$testfile..." ; \
+ 		node $$testfile ; \
+	done
