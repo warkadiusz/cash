@@ -19,21 +19,28 @@ assign_to_label : LABEL OP_ASSIGN expr;
 comment : COMMENT | BLOCK_COMMENT;
 
 func_declaration : KW_FUNC LABEL L_BRACE statement* R_BRACE;
-func_call : LABEL L_PAR R_PAR
-          | LABEL L_PAR ((expr) ',')* (expr) R_PAR;
+func_call : name=func_name L_PAR (args+=expr ',')* (args+=expr) R_PAR;
 
-expr : expr OP_POW expr
-     |  expr  op=(OP_MULTIPLY | OP_DIVIDE)  expr
-     |  expr  op=(OP_PLUS | OP_SUB) expr
-     |  L_PAR expr R_PAR
-     |  (OP_PLUS | OP_SUB)? NUM_LIT
-     | STR_LIT
-     | func_call
-     | LABEL
-     | expr op=(OP_AND | OP_OR) expr
-     | expr op=(OP_EQ | OP_GT | OP_GE | OP_LE | OP_LT) expr
+expr : left=expr op=op_pow right=expr                       #powExpression
+     | left=expr op=op_multi right=expr                     #multiExpression
+     | left=expr op=op_add right=expr                       #addExpression
+     | L_PAR expr R_PAR                                     #parExpression
+     | func_call                                            #funcExpression
+     | LABEL                                                #labelExpression
+     | expr op=(OP_AND | OP_OR) expr                        #binExpression
+     | expr op=(OP_EQ | OP_GT | OP_GE | OP_LE | OP_LT) expr #compExpression
+     | atom                                                 #atomExpression
+     ;
+
+atom : STR_LIT
+     | (OP_PLUS | OP_SUB)? NUM_LIT
      | (KW_TRUE | KW_FALSE)
      ;
+
+op_pow: (OP_POW);
+op_multi: (OP_MULTIPLY | OP_DIVIDE);
+op_add:   (OP_PLUS | OP_SUB);
+func_name: LABEL;
 
 statement_block : L_BRACE statement+ R_BRACE
                 | statement ;
@@ -56,7 +63,7 @@ OP_ASSIGN: '=' ;
 OP_PLUS: '+' ;
 OP_SUB: '-' ;
 OP_MULTIPLY: '*' ;
-OP_DIVIDE: '\\' ;
+OP_DIVIDE: '/' ;
 OP_POW: '^^' ;
 OP_INCREMENT: '++' ;
 OP_DECREMENT: '--' ;
@@ -76,7 +83,7 @@ R_PAR: ')';
 LABEL : [a-zA-Z] ([a-zA-Z_] | DIGIT)* ;
 
 STR_LIT : '"'.*?'"' ;
-NUM_LIT : DIGIT+ 
+NUM_LIT : DIGIT+
                 | DIGIT+ '.' DIGIT+
                 | '-' DIGIT+
                 | '-' DIGIT+ '.' DIGIT+

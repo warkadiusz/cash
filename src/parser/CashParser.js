@@ -7,65 +7,109 @@ var CashVisitor = require('./CashVisitor').CashVisitor;
 var grammarFileName = "Cash.g4";
 
 var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
-    "\u0003\u001ah\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
+    "\u0003%\u00ae\u0004\u0002\t\u0002\u0004\u0003\t\u0003\u0004\u0004\t",
     "\u0004\u0004\u0005\t\u0005\u0004\u0006\t\u0006\u0004\u0007\t\u0007\u0004",
-    "\b\t\b\u0004\t\t\t\u0003\u0002\u0003\u0002\u0003\u0002\u0007\u0002\u0016",
-    "\n\u0002\f\u0002\u000e\u0002\u0019\u000b\u0002\u0003\u0003\u0003\u0003",
-    "\u0003\u0003\u0003\u0003\u0005\u0003\u001f\n\u0003\u0003\u0004\u0003",
-    "\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0005\u0003\u0005\u0003",
-    "\u0005\u0003\u0005\u0003\u0005\u0003\u0006\u0003\u0006\u0003\u0006\u0003",
-    "\u0006\u0003\u0007\u0003\u0007\u0003\u0007\u0003\u0007\u0007\u00073",
-    "\n\u0007\f\u0007\u000e\u00076\u000b\u0007\u0003\u0007\u0003\u0007\u0003",
-    "\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0003\b\u0007\bB",
-    "\n\b\f\b\u000e\bE\u000b\b\u0003\b\u0003\b\u0003\b\u0005\bJ\n\b\u0003",
-    "\t\u0003\t\u0003\t\u0003\t\u0003\t\u0003\t\u0005\tR\n\t\u0003\t\u0003",
-    "\t\u0003\t\u0003\t\u0005\tX\n\t\u0003\t\u0003\t\u0003\t\u0003\t\u0003",
-    "\t\u0003\t\u0003\t\u0003\t\u0003\t\u0007\tc\n\t\f\t\u000e\tf\u000b\t",
-    "\u0003\t\u0002\u0003\u0010\n\u0002\u0004\u0006\b\n\f\u000e\u0010\u0002",
-    "\u0004\u0003\u0002\n\u000b\u0003\u0002\f\r\u0002p\u0002\u0017\u0003",
-    "\u0002\u0002\u0002\u0004\u001e\u0003\u0002\u0002\u0002\u0006 \u0003",
-    "\u0002\u0002\u0002\b%\u0003\u0002\u0002\u0002\n*\u0003\u0002\u0002\u0002",
-    "\f.\u0003\u0002\u0002\u0002\u000eI\u0003\u0002\u0002\u0002\u0010W\u0003",
-    "\u0002\u0002\u0002\u0012\u0016\u0005\u0004\u0003\u0002\u0013\u0016\u0005",
-    "\f\u0007\u0002\u0014\u0016\u0007\u0018\u0002\u0002\u0015\u0012\u0003",
-    "\u0002\u0002\u0002\u0015\u0013\u0003\u0002\u0002\u0002\u0015\u0014\u0003",
-    "\u0002\u0002\u0002\u0016\u0019\u0003\u0002\u0002\u0002\u0017\u0015\u0003",
-    "\u0002\u0002\u0002\u0017\u0018\u0003\u0002\u0002\u0002\u0018\u0003\u0003",
-    "\u0002\u0002\u0002\u0019\u0017\u0003\u0002\u0002\u0002\u001a\u001f\u0005",
-    "\u0006\u0004\u0002\u001b\u001f\u0005\b\u0005\u0002\u001c\u001f\u0005",
-    "\u000e\b\u0002\u001d\u001f\u0005\n\u0006\u0002\u001e\u001a\u0003\u0002",
-    "\u0002\u0002\u001e\u001b\u0003\u0002\u0002\u0002\u001e\u001c\u0003\u0002",
-    "\u0002\u0002\u001e\u001d\u0003\u0002\u0002\u0002\u001f\u0005\u0003\u0002",
-    "\u0002\u0002 !\u0007\u0004\u0002\u0002!\"\u0007\u0015\u0002\u0002\"",
-    "#\u0007\t\u0002\u0002#$\u0005\u0010\t\u0002$\u0007\u0003\u0002\u0002",
-    "\u0002%&\u0007\u0005\u0002\u0002&\'\u0007\u0015\u0002\u0002\'(\u0007",
-    "\t\u0002\u0002()\u0005\u0010\t\u0002)\t\u0003\u0002\u0002\u0002*+\u0007",
-    "\u0015\u0002\u0002+,\u0007\t\u0002\u0002,-\u0005\u0010\t\u0002-\u000b",
-    "\u0003\u0002\u0002\u0002./\u0007\b\u0002\u0002/0\u0007\u0015\u0002\u0002",
-    "04\u0007\u0011\u0002\u000213\u0005\u0004\u0003\u000221\u0003\u0002\u0002",
-    "\u000236\u0003\u0002\u0002\u000242\u0003\u0002\u0002\u000245\u0003\u0002",
-    "\u0002\u000257\u0003\u0002\u0002\u000264\u0003\u0002\u0002\u000278\u0007",
-    "\u0012\u0002\u00028\r\u0003\u0002\u0002\u00029:\u0007\u0015\u0002\u0002",
-    ":;\u0007\u0013\u0002\u0002;J\u0007\u0014\u0002\u0002<=\u0007\u0015\u0002",
-    "\u0002=C\u0007\u0013\u0002\u0002>?\u0005\u0010\t\u0002?@\u0007\u0003",
-    "\u0002\u0002@B\u0003\u0002\u0002\u0002A>\u0003\u0002\u0002\u0002BE\u0003",
-    "\u0002\u0002\u0002CA\u0003\u0002\u0002\u0002CD\u0003\u0002\u0002\u0002",
-    "DF\u0003\u0002\u0002\u0002EC\u0003\u0002\u0002\u0002FG\u0005\u0010\t",
-    "\u0002GH\u0007\u0014\u0002\u0002HJ\u0003\u0002\u0002\u0002I9\u0003\u0002",
-    "\u0002\u0002I<\u0003\u0002\u0002\u0002J\u000f\u0003\u0002\u0002\u0002",
-    "KL\b\t\u0001\u0002LM\u0007\u0013\u0002\u0002MN\u0005\u0010\t\u0002N",
-    "O\u0007\u0014\u0002\u0002OX\u0003\u0002\u0002\u0002PR\t\u0002\u0002",
-    "\u0002QP\u0003\u0002\u0002\u0002QR\u0003\u0002\u0002\u0002RS\u0003\u0002",
-    "\u0002\u0002SX\u0007\u0017\u0002\u0002TX\u0007\u0016\u0002\u0002UX\u0005",
-    "\u000e\b\u0002VX\u0007\u0015\u0002\u0002WK\u0003\u0002\u0002\u0002W",
-    "Q\u0003\u0002\u0002\u0002WT\u0003\u0002\u0002\u0002WU\u0003\u0002\u0002",
-    "\u0002WV\u0003\u0002\u0002\u0002Xd\u0003\u0002\u0002\u0002YZ\f\n\u0002",
-    "\u0002Z[\u0007\u000e\u0002\u0002[c\u0005\u0010\t\u000b\\]\f\t\u0002",
-    "\u0002]^\t\u0003\u0002\u0002^c\u0005\u0010\t\n_`\f\b\u0002\u0002`a\t",
-    "\u0002\u0002\u0002ac\u0005\u0010\t\tbY\u0003\u0002\u0002\u0002b\\\u0003",
-    "\u0002\u0002\u0002b_\u0003\u0002\u0002\u0002cf\u0003\u0002\u0002\u0002",
-    "db\u0003\u0002\u0002\u0002de\u0003\u0002\u0002\u0002e\u0011\u0003\u0002",
-    "\u0002\u0002fd\u0003\u0002\u0002\u0002\f\u0015\u0017\u001e4CIQWbd"].join("");
+    "\b\t\b\u0004\t\t\t\u0004\n\t\n\u0004\u000b\t\u000b\u0004\f\t\f\u0004",
+    "\r\t\r\u0004\u000e\t\u000e\u0004\u000f\t\u000f\u0004\u0010\t\u0010\u0004",
+    "\u0011\t\u0011\u0004\u0012\t\u0012\u0003\u0002\u0007\u0002&\n\u0002",
+    "\f\u0002\u000e\u0002)\u000b\u0002\u0003\u0003\u0003\u0003\u0003\u0003",
+    "\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0003\u0005\u0003",
+    "3\n\u0003\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004\u0003\u0004",
+    "\u0003\u0005\u0003\u0005\u0003\u0005\u0003\u0005\u0003\u0005\u0003\u0006",
+    "\u0003\u0006\u0003\u0006\u0003\u0006\u0003\u0007\u0003\u0007\u0003\b",
+    "\u0003\b\u0003\b\u0003\b\u0007\bI\n\b\f\b\u000e\bL\u000b\b\u0003\b\u0003",
+    "\b\u0003\t\u0003\t\u0003\t\u0003\t\u0003\t\u0007\tU\n\t\f\t\u000e\t",
+    "X\u000b\t\u0003\t\u0003\t\u0003\t\u0003\n\u0003\n\u0003\n\u0003\n\u0003",
+    "\n\u0003\n\u0003\n\u0003\n\u0005\ne\n\n\u0003\n\u0003\n\u0003\n\u0003",
+    "\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003",
+    "\n\u0003\n\u0003\n\u0003\n\u0003\n\u0003\n\u0007\ny\n\n\f\n\u000e\n",
+    "|\u000b\n\u0003\u000b\u0003\u000b\u0005\u000b\u0080\n\u000b\u0003\u000b",
+    "\u0003\u000b\u0005\u000b\u0084\n\u000b\u0003\f\u0003\f\u0003\r\u0003",
+    "\r\u0003\u000e\u0003\u000e\u0003\u000f\u0003\u000f\u0003\u0010\u0003",
+    "\u0010\u0006\u0010\u0090\n\u0010\r\u0010\u000e\u0010\u0091\u0003\u0010",
+    "\u0003\u0010\u0003\u0010\u0005\u0010\u0097\n\u0010\u0003\u0011\u0003",
+    "\u0011\u0003\u0011\u0003\u0011\u0003\u0011\u0003\u0011\u0003\u0011\u0003",
+    "\u0011\u0007\u0011\u00a1\n\u0011\f\u0011\u000e\u0011\u00a4\u000b\u0011",
+    "\u0003\u0011\u0003\u0011\u0005\u0011\u00a8\n\u0011\u0003\u0012\u0003",
+    "\u0012\u0003\u0012\u0003\u0012\u0003\u0012\u0002\u0003\u0012\u0013\u0002",
+    "\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016\u0018\u001a\u001c\u001e",
+    " \"\u0002\b\u0003\u0002\"#\u0003\u0002\u0014\u0015\u0003\u0002\u0016",
+    "\u001a\u0003\u0002\r\u000e\u0003\u0002\n\u000b\u0003\u0002\u000f\u0010",
+    "\u0002\u00b5\u0002\'\u0003\u0002\u0002\u0002\u00042\u0003\u0002\u0002",
+    "\u0002\u00064\u0003\u0002\u0002\u0002\b9\u0003\u0002\u0002\u0002\n>",
+    "\u0003\u0002\u0002\u0002\fB\u0003\u0002\u0002\u0002\u000eD\u0003\u0002",
+    "\u0002\u0002\u0010O\u0003\u0002\u0002\u0002\u0012d\u0003\u0002\u0002",
+    "\u0002\u0014\u0083\u0003\u0002\u0002\u0002\u0016\u0085\u0003\u0002\u0002",
+    "\u0002\u0018\u0087\u0003\u0002\u0002\u0002\u001a\u0089\u0003\u0002\u0002",
+    "\u0002\u001c\u008b\u0003\u0002\u0002\u0002\u001e\u0096\u0003\u0002\u0002",
+    "\u0002 \u0098\u0003\u0002\u0002\u0002\"\u00a9\u0003\u0002\u0002\u0002",
+    "$&\u0005\u0004\u0003\u0002%$\u0003\u0002\u0002\u0002&)\u0003\u0002\u0002",
+    "\u0002\'%\u0003\u0002\u0002\u0002\'(\u0003\u0002\u0002\u0002(\u0003",
+    "\u0003\u0002\u0002\u0002)\'\u0003\u0002\u0002\u0002*3\u0005\u0006\u0004",
+    "\u0002+3\u0005\b\u0005\u0002,3\u0005\n\u0006\u0002-3\u0005 \u0011\u0002",
+    ".3\u0005\"\u0012\u0002/3\u0005\u000e\b\u000203\u0005\f\u0007\u00021",
+    "3\u0005\u0012\n\u00022*\u0003\u0002\u0002\u00022+\u0003\u0002\u0002",
+    "\u00022,\u0003\u0002\u0002\u00022-\u0003\u0002\u0002\u00022.\u0003\u0002",
+    "\u0002\u00022/\u0003\u0002\u0002\u000220\u0003\u0002\u0002\u000221\u0003",
+    "\u0002\u0002\u00023\u0005\u0003\u0002\u0002\u000245\u0007\u0004\u0002",
+    "\u000256\u0007\u001f\u0002\u000267\u0007\f\u0002\u000278\u0005\u0012",
+    "\n\u00028\u0007\u0003\u0002\u0002\u00029:\u0007\u0005\u0002\u0002:;",
+    "\u0007\u001f\u0002\u0002;<\u0007\f\u0002\u0002<=\u0005\u0012\n\u0002",
+    "=\t\u0003\u0002\u0002\u0002>?\u0007\u001f\u0002\u0002?@\u0007\f\u0002",
+    "\u0002@A\u0005\u0012\n\u0002A\u000b\u0003\u0002\u0002\u0002BC\t\u0002",
+    "\u0002\u0002C\r\u0003\u0002\u0002\u0002DE\u0007\b\u0002\u0002EF\u0007",
+    "\u001f\u0002\u0002FJ\u0007\u001b\u0002\u0002GI\u0005\u0004\u0003\u0002",
+    "HG\u0003\u0002\u0002\u0002IL\u0003\u0002\u0002\u0002JH\u0003\u0002\u0002",
+    "\u0002JK\u0003\u0002\u0002\u0002KM\u0003\u0002\u0002\u0002LJ\u0003\u0002",
+    "\u0002\u0002MN\u0007\u001c\u0002\u0002N\u000f\u0003\u0002\u0002\u0002",
+    "OP\u0005\u001c\u000f\u0002PV\u0007\u001d\u0002\u0002QR\u0005\u0012\n",
+    "\u0002RS\u0007\u0003\u0002\u0002SU\u0003\u0002\u0002\u0002TQ\u0003\u0002",
+    "\u0002\u0002UX\u0003\u0002\u0002\u0002VT\u0003\u0002\u0002\u0002VW\u0003",
+    "\u0002\u0002\u0002WY\u0003\u0002\u0002\u0002XV\u0003\u0002\u0002\u0002",
+    "YZ\u0005\u0012\n\u0002Z[\u0007\u001e\u0002\u0002[\u0011\u0003\u0002",
+    "\u0002\u0002\\]\b\n\u0001\u0002]^\u0007\u001d\u0002\u0002^_\u0005\u0012",
+    "\n\u0002_`\u0007\u001e\u0002\u0002`e\u0003\u0002\u0002\u0002ae\u0005",
+    "\u0010\t\u0002be\u0007\u001f\u0002\u0002ce\u0005\u0014\u000b\u0002d",
+    "\\\u0003\u0002\u0002\u0002da\u0003\u0002\u0002\u0002db\u0003\u0002\u0002",
+    "\u0002dc\u0003\u0002\u0002\u0002ez\u0003\u0002\u0002\u0002fg\f\u000b",
+    "\u0002\u0002gh\u0005\u0016\f\u0002hi\u0005\u0012\n\fiy\u0003\u0002\u0002",
+    "\u0002jk\f\n\u0002\u0002kl\u0005\u0018\r\u0002lm\u0005\u0012\n\u000b",
+    "my\u0003\u0002\u0002\u0002no\f\t\u0002\u0002op\u0005\u001a\u000e\u0002",
+    "pq\u0005\u0012\n\nqy\u0003\u0002\u0002\u0002rs\f\u0005\u0002\u0002s",
+    "t\t\u0003\u0002\u0002ty\u0005\u0012\n\u0006uv\f\u0004\u0002\u0002vw",
+    "\t\u0004\u0002\u0002wy\u0005\u0012\n\u0005xf\u0003\u0002\u0002\u0002",
+    "xj\u0003\u0002\u0002\u0002xn\u0003\u0002\u0002\u0002xr\u0003\u0002\u0002",
+    "\u0002xu\u0003\u0002\u0002\u0002y|\u0003\u0002\u0002\u0002zx\u0003\u0002",
+    "\u0002\u0002z{\u0003\u0002\u0002\u0002{\u0013\u0003\u0002\u0002\u0002",
+    "|z\u0003\u0002\u0002\u0002}\u0084\u0007 \u0002\u0002~\u0080\t\u0005",
+    "\u0002\u0002\u007f~\u0003\u0002\u0002\u0002\u007f\u0080\u0003\u0002",
+    "\u0002\u0002\u0080\u0081\u0003\u0002\u0002\u0002\u0081\u0084\u0007!",
+    "\u0002\u0002\u0082\u0084\t\u0006\u0002\u0002\u0083}\u0003\u0002\u0002",
+    "\u0002\u0083\u007f\u0003\u0002\u0002\u0002\u0083\u0082\u0003\u0002\u0002",
+    "\u0002\u0084\u0015\u0003\u0002\u0002\u0002\u0085\u0086\u0007\u0011\u0002",
+    "\u0002\u0086\u0017\u0003\u0002\u0002\u0002\u0087\u0088\t\u0007\u0002",
+    "\u0002\u0088\u0019\u0003\u0002\u0002\u0002\u0089\u008a\t\u0005\u0002",
+    "\u0002\u008a\u001b\u0003\u0002\u0002\u0002\u008b\u008c\u0007\u001f\u0002",
+    "\u0002\u008c\u001d\u0003\u0002\u0002\u0002\u008d\u008f\u0007\u001b\u0002",
+    "\u0002\u008e\u0090\u0005\u0004\u0003\u0002\u008f\u008e\u0003\u0002\u0002",
+    "\u0002\u0090\u0091\u0003\u0002\u0002\u0002\u0091\u008f\u0003\u0002\u0002",
+    "\u0002\u0091\u0092\u0003\u0002\u0002\u0002\u0092\u0093\u0003\u0002\u0002",
+    "\u0002\u0093\u0094\u0007\u001c\u0002\u0002\u0094\u0097\u0003\u0002\u0002",
+    "\u0002\u0095\u0097\u0005\u0004\u0003\u0002\u0096\u008d\u0003\u0002\u0002",
+    "\u0002\u0096\u0095\u0003\u0002\u0002\u0002\u0097\u001f\u0003\u0002\u0002",
+    "\u0002\u0098\u0099\u0007\u0006\u0002\u0002\u0099\u009a\u0005\u0012\n",
+    "\u0002\u009a\u00a2\u0005\u001e\u0010\u0002\u009b\u009c\u0007\t\u0002",
+    "\u0002\u009c\u009d\u0007\u0006\u0002\u0002\u009d\u009e\u0005\u0012\n",
+    "\u0002\u009e\u009f\u0005\u001e\u0010\u0002\u009f\u00a1\u0003\u0002\u0002",
+    "\u0002\u00a0\u009b\u0003\u0002\u0002\u0002\u00a1\u00a4\u0003\u0002\u0002",
+    "\u0002\u00a2\u00a0\u0003\u0002\u0002\u0002\u00a2\u00a3\u0003\u0002\u0002",
+    "\u0002\u00a3\u00a7\u0003\u0002\u0002\u0002\u00a4\u00a2\u0003\u0002\u0002",
+    "\u0002\u00a5\u00a6\u0007\t\u0002\u0002\u00a6\u00a8\u0005\u001e\u0010",
+    "\u0002\u00a7\u00a5\u0003\u0002\u0002\u0002\u00a7\u00a8\u0003\u0002\u0002",
+    "\u0002\u00a8!\u0003\u0002\u0002\u0002\u00a9\u00aa\u0007\u0007\u0002",
+    "\u0002\u00aa\u00ab\u0005\u0012\n\u0002\u00ab\u00ac\u0005\u001e\u0010",
+    "\u0002\u00ac#\u0003\u0002\u0002\u0002\u000f\'2JVdxz\u007f\u0083\u0091",
+    "\u0096\u00a2\u00a7"].join("");
 
 
 var atn = new antlr4.atn.ATNDeserializer().deserialize(serializedATN);
@@ -75,17 +119,23 @@ var decisionsToDFA = atn.decisionToState.map( function(ds, index) { return new a
 var sharedContextCache = new antlr4.PredictionContextCache();
 
 var literalNames = [ null, "','", "'let'", "'const'", "'if'", "'while'", 
-                     "'func'", "'='", "'+'", "'-'", "'*'", "'\\'", "'^^'", 
-                     "'++'", "'--'", "'{'", "'}'", "'('", "')'" ];
+                     "'func'", "'else'", "'true'", "'false'", "'='", "'+'", 
+                     "'-'", "'*'", "'/'", "'^^'", "'++'", "'--'", "'&&'", 
+                     "'||'", "'=='", "'>'", "'>='", "'<'", "'<='", "'{'", 
+                     "'}'", "'('", "')'" ];
 
 var symbolicNames = [ null, null, "KW_LET", "KW_CONST", "KW_IF", "KW_WHILE", 
-                      "KW_FUNC", "OP_ASSIGN", "OP_PLUS", "OP_SUB", "OP_MULTIPLY", 
-                      "OP_DIVIDE", "OP_POW", "OP_INCREMENT", "OP_DECREMENT", 
-                      "L_BRACE", "R_BRACE", "L_PAR", "R_PAR", "LABEL", "STR_LIT", 
-                      "NUM_LIT", "COMMENT", "WS", "EOL" ];
+                      "KW_FUNC", "KW_ELSE", "KW_TRUE", "KW_FALSE", "OP_ASSIGN", 
+                      "OP_PLUS", "OP_SUB", "OP_MULTIPLY", "OP_DIVIDE", "OP_POW", 
+                      "OP_INCREMENT", "OP_DECREMENT", "OP_AND", "OP_OR", 
+                      "OP_EQ", "OP_GT", "OP_GE", "OP_LT", "OP_LE", "L_BRACE", 
+                      "R_BRACE", "L_PAR", "R_PAR", "LABEL", "STR_LIT", "NUM_LIT", 
+                      "COMMENT", "BLOCK_COMMENT", "WS", "EOL" ];
 
-var ruleNames =  [ "program", "std_expr", "var_assignment", "const_assignment", 
-                   "assign_to_label", "func_declaration", "func_call", "expr" ];
+var ruleNames =  [ "program", "statement", "var_assignment", "const_assignment", 
+                   "assign_to_label", "comment", "func_declaration", "func_call", 
+                   "expr", "atom", "op_pow", "op_multi", "op_add", "func_name", 
+                   "statement_block", "if_statement", "while_statement" ];
 
 function CashParser (input) {
 	antlr4.Parser.call(this, input);
@@ -112,33 +162,53 @@ CashParser.KW_CONST = 3;
 CashParser.KW_IF = 4;
 CashParser.KW_WHILE = 5;
 CashParser.KW_FUNC = 6;
-CashParser.OP_ASSIGN = 7;
-CashParser.OP_PLUS = 8;
-CashParser.OP_SUB = 9;
-CashParser.OP_MULTIPLY = 10;
-CashParser.OP_DIVIDE = 11;
-CashParser.OP_POW = 12;
-CashParser.OP_INCREMENT = 13;
-CashParser.OP_DECREMENT = 14;
-CashParser.L_BRACE = 15;
-CashParser.R_BRACE = 16;
-CashParser.L_PAR = 17;
-CashParser.R_PAR = 18;
-CashParser.LABEL = 19;
-CashParser.STR_LIT = 20;
-CashParser.NUM_LIT = 21;
-CashParser.COMMENT = 22;
-CashParser.WS = 23;
-CashParser.EOL = 24;
+CashParser.KW_ELSE = 7;
+CashParser.KW_TRUE = 8;
+CashParser.KW_FALSE = 9;
+CashParser.OP_ASSIGN = 10;
+CashParser.OP_PLUS = 11;
+CashParser.OP_SUB = 12;
+CashParser.OP_MULTIPLY = 13;
+CashParser.OP_DIVIDE = 14;
+CashParser.OP_POW = 15;
+CashParser.OP_INCREMENT = 16;
+CashParser.OP_DECREMENT = 17;
+CashParser.OP_AND = 18;
+CashParser.OP_OR = 19;
+CashParser.OP_EQ = 20;
+CashParser.OP_GT = 21;
+CashParser.OP_GE = 22;
+CashParser.OP_LT = 23;
+CashParser.OP_LE = 24;
+CashParser.L_BRACE = 25;
+CashParser.R_BRACE = 26;
+CashParser.L_PAR = 27;
+CashParser.R_PAR = 28;
+CashParser.LABEL = 29;
+CashParser.STR_LIT = 30;
+CashParser.NUM_LIT = 31;
+CashParser.COMMENT = 32;
+CashParser.BLOCK_COMMENT = 33;
+CashParser.WS = 34;
+CashParser.EOL = 35;
 
 CashParser.RULE_program = 0;
-CashParser.RULE_std_expr = 1;
+CashParser.RULE_statement = 1;
 CashParser.RULE_var_assignment = 2;
 CashParser.RULE_const_assignment = 3;
 CashParser.RULE_assign_to_label = 4;
-CashParser.RULE_func_declaration = 5;
-CashParser.RULE_func_call = 6;
-CashParser.RULE_expr = 7;
+CashParser.RULE_comment = 5;
+CashParser.RULE_func_declaration = 6;
+CashParser.RULE_func_call = 7;
+CashParser.RULE_expr = 8;
+CashParser.RULE_atom = 9;
+CashParser.RULE_op_pow = 10;
+CashParser.RULE_op_multi = 11;
+CashParser.RULE_op_add = 12;
+CashParser.RULE_func_name = 13;
+CashParser.RULE_statement_block = 14;
+CashParser.RULE_if_statement = 15;
+CashParser.RULE_while_statement = 16;
 
 function ProgramContext(parser, parent, invokingState) {
 	if(parent===undefined) {
@@ -156,39 +226,16 @@ function ProgramContext(parser, parent, invokingState) {
 ProgramContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
 ProgramContext.prototype.constructor = ProgramContext;
 
-ProgramContext.prototype.std_expr = function(i) {
+ProgramContext.prototype.statement = function(i) {
     if(i===undefined) {
         i = null;
     }
     if(i===null) {
-        return this.getTypedRuleContexts(Std_exprContext);
+        return this.getTypedRuleContexts(StatementContext);
     } else {
-        return this.getTypedRuleContext(Std_exprContext,i);
+        return this.getTypedRuleContext(StatementContext,i);
     }
 };
-
-ProgramContext.prototype.func_declaration = function(i) {
-    if(i===undefined) {
-        i = null;
-    }
-    if(i===null) {
-        return this.getTypedRuleContexts(Func_declarationContext);
-    } else {
-        return this.getTypedRuleContext(Func_declarationContext,i);
-    }
-};
-
-ProgramContext.prototype.COMMENT = function(i) {
-	if(i===undefined) {
-		i = null;
-	}
-    if(i===null) {
-        return this.getTokens(CashParser.COMMENT);
-    } else {
-        return this.getToken(CashParser.COMMENT, i);
-    }
-};
-
 
 ProgramContext.prototype.enterRule = function(listener) {
     if(listener instanceof CashListener ) {
@@ -222,31 +269,13 @@ CashParser.prototype.program = function() {
     var _la = 0; // Token type
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 21;
+        this.state = 37;
         this._errHandler.sync(this);
         _la = this._input.LA(1);
-        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CashParser.KW_LET) | (1 << CashParser.KW_CONST) | (1 << CashParser.KW_FUNC) | (1 << CashParser.LABEL) | (1 << CashParser.COMMENT))) !== 0)) {
-            this.state = 19;
-            this._errHandler.sync(this);
-            switch(this._input.LA(1)) {
-            case CashParser.KW_LET:
-            case CashParser.KW_CONST:
-            case CashParser.LABEL:
-                this.state = 16;
-                this.std_expr();
-                break;
-            case CashParser.KW_FUNC:
-                this.state = 17;
-                this.func_declaration();
-                break;
-            case CashParser.COMMENT:
-                this.state = 18;
-                this.match(CashParser.COMMENT);
-                break;
-            default:
-                throw new antlr4.error.NoViableAltException(this);
-            }
-            this.state = 23;
+        while(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (CashParser.KW_LET - 2)) | (1 << (CashParser.KW_CONST - 2)) | (1 << (CashParser.KW_IF - 2)) | (1 << (CashParser.KW_WHILE - 2)) | (1 << (CashParser.KW_FUNC - 2)) | (1 << (CashParser.KW_TRUE - 2)) | (1 << (CashParser.KW_FALSE - 2)) | (1 << (CashParser.OP_PLUS - 2)) | (1 << (CashParser.OP_SUB - 2)) | (1 << (CashParser.L_PAR - 2)) | (1 << (CashParser.LABEL - 2)) | (1 << (CashParser.STR_LIT - 2)) | (1 << (CashParser.NUM_LIT - 2)) | (1 << (CashParser.COMMENT - 2)) | (1 << (CashParser.BLOCK_COMMENT - 2)))) !== 0)) {
+            this.state = 34;
+            this.statement();
+            this.state = 39;
             this._errHandler.sync(this);
             _la = this._input.LA(1);
         }
@@ -264,7 +293,7 @@ CashParser.prototype.program = function() {
     return localctx;
 };
 
-function Std_exprContext(parser, parent, invokingState) {
+function StatementContext(parser, parent, invokingState) {
 	if(parent===undefined) {
 	    parent = null;
 	}
@@ -273,44 +302,60 @@ function Std_exprContext(parser, parent, invokingState) {
 	}
 	antlr4.ParserRuleContext.call(this, parent, invokingState);
     this.parser = parser;
-    this.ruleIndex = CashParser.RULE_std_expr;
+    this.ruleIndex = CashParser.RULE_statement;
     return this;
 }
 
-Std_exprContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
-Std_exprContext.prototype.constructor = Std_exprContext;
+StatementContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+StatementContext.prototype.constructor = StatementContext;
 
-Std_exprContext.prototype.var_assignment = function() {
+StatementContext.prototype.var_assignment = function() {
     return this.getTypedRuleContext(Var_assignmentContext,0);
 };
 
-Std_exprContext.prototype.const_assignment = function() {
+StatementContext.prototype.const_assignment = function() {
     return this.getTypedRuleContext(Const_assignmentContext,0);
 };
 
-Std_exprContext.prototype.func_call = function() {
-    return this.getTypedRuleContext(Func_callContext,0);
-};
-
-Std_exprContext.prototype.assign_to_label = function() {
+StatementContext.prototype.assign_to_label = function() {
     return this.getTypedRuleContext(Assign_to_labelContext,0);
 };
 
-Std_exprContext.prototype.enterRule = function(listener) {
+StatementContext.prototype.if_statement = function() {
+    return this.getTypedRuleContext(If_statementContext,0);
+};
+
+StatementContext.prototype.while_statement = function() {
+    return this.getTypedRuleContext(While_statementContext,0);
+};
+
+StatementContext.prototype.func_declaration = function() {
+    return this.getTypedRuleContext(Func_declarationContext,0);
+};
+
+StatementContext.prototype.comment = function() {
+    return this.getTypedRuleContext(CommentContext,0);
+};
+
+StatementContext.prototype.expr = function() {
+    return this.getTypedRuleContext(ExprContext,0);
+};
+
+StatementContext.prototype.enterRule = function(listener) {
     if(listener instanceof CashListener ) {
-        listener.enterStd_expr(this);
+        listener.enterStatement(this);
 	}
 };
 
-Std_exprContext.prototype.exitRule = function(listener) {
+StatementContext.prototype.exitRule = function(listener) {
     if(listener instanceof CashListener ) {
-        listener.exitStd_expr(this);
+        listener.exitStatement(this);
 	}
 };
 
-Std_exprContext.prototype.accept = function(visitor) {
+StatementContext.prototype.accept = function(visitor) {
     if ( visitor instanceof CashVisitor ) {
-        return visitor.visitStd_expr(this);
+        return visitor.visitStatement(this);
     } else {
         return visitor.visitChildren(this);
     }
@@ -319,39 +364,63 @@ Std_exprContext.prototype.accept = function(visitor) {
 
 
 
-CashParser.Std_exprContext = Std_exprContext;
+CashParser.StatementContext = StatementContext;
 
-CashParser.prototype.std_expr = function() {
+CashParser.prototype.statement = function() {
 
-    var localctx = new Std_exprContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 2, CashParser.RULE_std_expr);
+    var localctx = new StatementContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 2, CashParser.RULE_statement);
     try {
-        this.state = 28;
+        this.state = 48;
         this._errHandler.sync(this);
-        var la_ = this._interp.adaptivePredict(this._input,2,this._ctx);
+        var la_ = this._interp.adaptivePredict(this._input,1,this._ctx);
         switch(la_) {
         case 1:
             this.enterOuterAlt(localctx, 1);
-            this.state = 24;
+            this.state = 40;
             this.var_assignment();
             break;
 
         case 2:
             this.enterOuterAlt(localctx, 2);
-            this.state = 25;
+            this.state = 41;
             this.const_assignment();
             break;
 
         case 3:
             this.enterOuterAlt(localctx, 3);
-            this.state = 26;
-            this.func_call();
+            this.state = 42;
+            this.assign_to_label();
             break;
 
         case 4:
             this.enterOuterAlt(localctx, 4);
-            this.state = 27;
-            this.assign_to_label();
+            this.state = 43;
+            this.if_statement();
+            break;
+
+        case 5:
+            this.enterOuterAlt(localctx, 5);
+            this.state = 44;
+            this.while_statement();
+            break;
+
+        case 6:
+            this.enterOuterAlt(localctx, 6);
+            this.state = 45;
+            this.func_declaration();
+            break;
+
+        case 7:
+            this.enterOuterAlt(localctx, 7);
+            this.state = 46;
+            this.comment();
+            break;
+
+        case 8:
+            this.enterOuterAlt(localctx, 8);
+            this.state = 47;
+            this.expr(0);
             break;
 
         }
@@ -432,13 +501,13 @@ CashParser.prototype.var_assignment = function() {
     this.enterRule(localctx, 4, CashParser.RULE_var_assignment);
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 30;
+        this.state = 50;
         this.match(CashParser.KW_LET);
-        this.state = 31;
+        this.state = 51;
         this.match(CashParser.LABEL);
-        this.state = 32;
+        this.state = 52;
         this.match(CashParser.OP_ASSIGN);
-        this.state = 33;
+        this.state = 53;
         this.expr(0);
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
@@ -517,13 +586,13 @@ CashParser.prototype.const_assignment = function() {
     this.enterRule(localctx, 6, CashParser.RULE_const_assignment);
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 35;
+        this.state = 55;
         this.match(CashParser.KW_CONST);
-        this.state = 36;
+        this.state = 56;
         this.match(CashParser.LABEL);
-        this.state = 37;
+        this.state = 57;
         this.match(CashParser.OP_ASSIGN);
-        this.state = 38;
+        this.state = 58;
         this.expr(0);
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
@@ -598,12 +667,91 @@ CashParser.prototype.assign_to_label = function() {
     this.enterRule(localctx, 8, CashParser.RULE_assign_to_label);
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 40;
+        this.state = 60;
         this.match(CashParser.LABEL);
-        this.state = 41;
+        this.state = 61;
         this.match(CashParser.OP_ASSIGN);
-        this.state = 42;
+        this.state = 62;
         this.expr(0);
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function CommentContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = CashParser.RULE_comment;
+    return this;
+}
+
+CommentContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+CommentContext.prototype.constructor = CommentContext;
+
+CommentContext.prototype.COMMENT = function() {
+    return this.getToken(CashParser.COMMENT, 0);
+};
+
+CommentContext.prototype.BLOCK_COMMENT = function() {
+    return this.getToken(CashParser.BLOCK_COMMENT, 0);
+};
+
+CommentContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterComment(this);
+	}
+};
+
+CommentContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitComment(this);
+	}
+};
+
+CommentContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitComment(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+CashParser.CommentContext = CommentContext;
+
+CashParser.prototype.comment = function() {
+
+    var localctx = new CommentContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 10, CashParser.RULE_comment);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 64;
+        _la = this._input.LA(1);
+        if(!(_la===CashParser.COMMENT || _la===CashParser.BLOCK_COMMENT)) {
+        this._errHandler.recoverInline(this);
+        }
+        else {
+        	this._errHandler.reportMatch(this);
+            this.consume();
+        }
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
 	        localctx.exception = re;
@@ -650,14 +798,14 @@ Func_declarationContext.prototype.R_BRACE = function() {
     return this.getToken(CashParser.R_BRACE, 0);
 };
 
-Func_declarationContext.prototype.std_expr = function(i) {
+Func_declarationContext.prototype.statement = function(i) {
     if(i===undefined) {
         i = null;
     }
     if(i===null) {
-        return this.getTypedRuleContexts(Std_exprContext);
+        return this.getTypedRuleContexts(StatementContext);
     } else {
-        return this.getTypedRuleContext(Std_exprContext,i);
+        return this.getTypedRuleContext(StatementContext,i);
     }
 };
 
@@ -689,27 +837,27 @@ CashParser.Func_declarationContext = Func_declarationContext;
 CashParser.prototype.func_declaration = function() {
 
     var localctx = new Func_declarationContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 10, CashParser.RULE_func_declaration);
+    this.enterRule(localctx, 12, CashParser.RULE_func_declaration);
     var _la = 0; // Token type
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 44;
+        this.state = 66;
         this.match(CashParser.KW_FUNC);
-        this.state = 45;
+        this.state = 67;
         this.match(CashParser.LABEL);
-        this.state = 46;
+        this.state = 68;
         this.match(CashParser.L_BRACE);
-        this.state = 50;
+        this.state = 72;
         this._errHandler.sync(this);
         _la = this._input.LA(1);
-        while((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CashParser.KW_LET) | (1 << CashParser.KW_CONST) | (1 << CashParser.LABEL))) !== 0)) {
-            this.state = 47;
-            this.std_expr();
-            this.state = 52;
+        while(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (CashParser.KW_LET - 2)) | (1 << (CashParser.KW_CONST - 2)) | (1 << (CashParser.KW_IF - 2)) | (1 << (CashParser.KW_WHILE - 2)) | (1 << (CashParser.KW_FUNC - 2)) | (1 << (CashParser.KW_TRUE - 2)) | (1 << (CashParser.KW_FALSE - 2)) | (1 << (CashParser.OP_PLUS - 2)) | (1 << (CashParser.OP_SUB - 2)) | (1 << (CashParser.L_PAR - 2)) | (1 << (CashParser.LABEL - 2)) | (1 << (CashParser.STR_LIT - 2)) | (1 << (CashParser.NUM_LIT - 2)) | (1 << (CashParser.COMMENT - 2)) | (1 << (CashParser.BLOCK_COMMENT - 2)))) !== 0)) {
+            this.state = 69;
+            this.statement();
+            this.state = 74;
             this._errHandler.sync(this);
             _la = this._input.LA(1);
         }
-        this.state = 53;
+        this.state = 75;
         this.match(CashParser.R_BRACE);
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
@@ -735,15 +883,14 @@ function Func_callContext(parser, parent, invokingState) {
 	antlr4.ParserRuleContext.call(this, parent, invokingState);
     this.parser = parser;
     this.ruleIndex = CashParser.RULE_func_call;
+    this.name = null; // Func_nameContext
+    this._expr = null; // ExprContext
+    this.args = []; // of ExprContexts
     return this;
 }
 
 Func_callContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
 Func_callContext.prototype.constructor = Func_callContext;
-
-Func_callContext.prototype.LABEL = function() {
-    return this.getToken(CashParser.LABEL, 0);
-};
 
 Func_callContext.prototype.L_PAR = function() {
     return this.getToken(CashParser.L_PAR, 0);
@@ -751,6 +898,10 @@ Func_callContext.prototype.L_PAR = function() {
 
 Func_callContext.prototype.R_PAR = function() {
     return this.getToken(CashParser.R_PAR, 0);
+};
+
+Func_callContext.prototype.func_name = function() {
+    return this.getTypedRuleContext(Func_nameContext,0);
 };
 
 Func_callContext.prototype.expr = function(i) {
@@ -792,50 +943,34 @@ CashParser.Func_callContext = Func_callContext;
 CashParser.prototype.func_call = function() {
 
     var localctx = new Func_callContext(this, this._ctx, this.state);
-    this.enterRule(localctx, 12, CashParser.RULE_func_call);
+    this.enterRule(localctx, 14, CashParser.RULE_func_call);
     try {
-        this.state = 71;
+        this.enterOuterAlt(localctx, 1);
+        this.state = 77;
+        localctx.name = this.func_name();
+        this.state = 78;
+        this.match(CashParser.L_PAR);
+        this.state = 84;
         this._errHandler.sync(this);
-        var la_ = this._interp.adaptivePredict(this._input,5,this._ctx);
-        switch(la_) {
-        case 1:
-            this.enterOuterAlt(localctx, 1);
-            this.state = 55;
-            this.match(CashParser.LABEL);
-            this.state = 56;
-            this.match(CashParser.L_PAR);
-            this.state = 57;
-            this.match(CashParser.R_PAR);
-            break;
-
-        case 2:
-            this.enterOuterAlt(localctx, 2);
-            this.state = 58;
-            this.match(CashParser.LABEL);
-            this.state = 59;
-            this.match(CashParser.L_PAR);
-            this.state = 65;
-            this._errHandler.sync(this);
-            var _alt = this._interp.adaptivePredict(this._input,4,this._ctx)
-            while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
-                if(_alt===1) {
-                    this.state = 60;
-                    this.expr(0);
-                    this.state = 61;
-                    this.match(CashParser.T__0); 
-                }
-                this.state = 67;
-                this._errHandler.sync(this);
-                _alt = this._interp.adaptivePredict(this._input,4,this._ctx);
+        var _alt = this._interp.adaptivePredict(this._input,3,this._ctx)
+        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+            if(_alt===1) {
+                this.state = 79;
+                localctx._expr = this.expr(0);
+                localctx.args.push(localctx._expr);
+                this.state = 80;
+                this.match(CashParser.T__0); 
             }
-
-            this.state = 68;
-            this.expr(0);
-            this.state = 69;
-            this.match(CashParser.R_PAR);
-            break;
-
+            this.state = 86;
+            this._errHandler.sync(this);
+            _alt = this._interp.adaptivePredict(this._input,3,this._ctx);
         }
+
+        this.state = 87;
+        localctx._expr = this.expr(0);
+        localctx.args.push(localctx._expr);
+        this.state = 88;
+        this.match(CashParser.R_PAR);
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
 	        localctx.exception = re;
@@ -866,11 +1001,27 @@ function ExprContext(parser, parent, invokingState) {
 ExprContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
 ExprContext.prototype.constructor = ExprContext;
 
-ExprContext.prototype.L_PAR = function() {
-    return this.getToken(CashParser.L_PAR, 0);
+
+ 
+ExprContext.prototype.copyFrom = function(ctx) {
+    antlr4.ParserRuleContext.prototype.copyFrom.call(this, ctx);
 };
 
-ExprContext.prototype.expr = function(i) {
+function AddExpressionContext(parser, ctx) {
+	ExprContext.call(this, parser);
+    this.left = null; // ExprContext;
+    this.op = null; // Op_addContext;
+    this.right = null; // ExprContext;
+    ExprContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+AddExpressionContext.prototype = Object.create(ExprContext.prototype);
+AddExpressionContext.prototype.constructor = AddExpressionContext;
+
+CashParser.AddExpressionContext = AddExpressionContext;
+
+AddExpressionContext.prototype.expr = function(i) {
     if(i===undefined) {
         i = null;
     }
@@ -881,61 +1032,384 @@ ExprContext.prototype.expr = function(i) {
     }
 };
 
-ExprContext.prototype.R_PAR = function() {
-    return this.getToken(CashParser.R_PAR, 0);
+AddExpressionContext.prototype.op_add = function() {
+    return this.getTypedRuleContext(Op_addContext,0);
+};
+AddExpressionContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterAddExpression(this);
+	}
 };
 
-ExprContext.prototype.NUM_LIT = function() {
-    return this.getToken(CashParser.NUM_LIT, 0);
+AddExpressionContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitAddExpression(this);
+	}
 };
 
-ExprContext.prototype.OP_PLUS = function() {
-    return this.getToken(CashParser.OP_PLUS, 0);
+AddExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitAddExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
 };
 
-ExprContext.prototype.OP_SUB = function() {
-    return this.getToken(CashParser.OP_SUB, 0);
+
+function CompExpressionContext(parser, ctx) {
+	ExprContext.call(this, parser);
+    this.op = null; // Token;
+    ExprContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+CompExpressionContext.prototype = Object.create(ExprContext.prototype);
+CompExpressionContext.prototype.constructor = CompExpressionContext;
+
+CashParser.CompExpressionContext = CompExpressionContext;
+
+CompExpressionContext.prototype.expr = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(ExprContext);
+    } else {
+        return this.getTypedRuleContext(ExprContext,i);
+    }
 };
 
-ExprContext.prototype.STR_LIT = function() {
-    return this.getToken(CashParser.STR_LIT, 0);
+CompExpressionContext.prototype.OP_EQ = function() {
+    return this.getToken(CashParser.OP_EQ, 0);
 };
 
-ExprContext.prototype.func_call = function() {
-    return this.getTypedRuleContext(Func_callContext,0);
+CompExpressionContext.prototype.OP_GT = function() {
+    return this.getToken(CashParser.OP_GT, 0);
 };
 
-ExprContext.prototype.LABEL = function() {
+CompExpressionContext.prototype.OP_GE = function() {
+    return this.getToken(CashParser.OP_GE, 0);
+};
+
+CompExpressionContext.prototype.OP_LE = function() {
+    return this.getToken(CashParser.OP_LE, 0);
+};
+
+CompExpressionContext.prototype.OP_LT = function() {
+    return this.getToken(CashParser.OP_LT, 0);
+};
+CompExpressionContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterCompExpression(this);
+	}
+};
+
+CompExpressionContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitCompExpression(this);
+	}
+};
+
+CompExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitCompExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+function AtomExpressionContext(parser, ctx) {
+	ExprContext.call(this, parser);
+    ExprContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+AtomExpressionContext.prototype = Object.create(ExprContext.prototype);
+AtomExpressionContext.prototype.constructor = AtomExpressionContext;
+
+CashParser.AtomExpressionContext = AtomExpressionContext;
+
+AtomExpressionContext.prototype.atom = function() {
+    return this.getTypedRuleContext(AtomContext,0);
+};
+AtomExpressionContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterAtomExpression(this);
+	}
+};
+
+AtomExpressionContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitAtomExpression(this);
+	}
+};
+
+AtomExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitAtomExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+function PowExpressionContext(parser, ctx) {
+	ExprContext.call(this, parser);
+    this.left = null; // ExprContext;
+    this.op = null; // Op_powContext;
+    this.right = null; // ExprContext;
+    ExprContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+PowExpressionContext.prototype = Object.create(ExprContext.prototype);
+PowExpressionContext.prototype.constructor = PowExpressionContext;
+
+CashParser.PowExpressionContext = PowExpressionContext;
+
+PowExpressionContext.prototype.expr = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(ExprContext);
+    } else {
+        return this.getTypedRuleContext(ExprContext,i);
+    }
+};
+
+PowExpressionContext.prototype.op_pow = function() {
+    return this.getTypedRuleContext(Op_powContext,0);
+};
+PowExpressionContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterPowExpression(this);
+	}
+};
+
+PowExpressionContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitPowExpression(this);
+	}
+};
+
+PowExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitPowExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+function MultiExpressionContext(parser, ctx) {
+	ExprContext.call(this, parser);
+    this.left = null; // ExprContext;
+    this.op = null; // Op_multiContext;
+    this.right = null; // ExprContext;
+    ExprContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+MultiExpressionContext.prototype = Object.create(ExprContext.prototype);
+MultiExpressionContext.prototype.constructor = MultiExpressionContext;
+
+CashParser.MultiExpressionContext = MultiExpressionContext;
+
+MultiExpressionContext.prototype.expr = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(ExprContext);
+    } else {
+        return this.getTypedRuleContext(ExprContext,i);
+    }
+};
+
+MultiExpressionContext.prototype.op_multi = function() {
+    return this.getTypedRuleContext(Op_multiContext,0);
+};
+MultiExpressionContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterMultiExpression(this);
+	}
+};
+
+MultiExpressionContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitMultiExpression(this);
+	}
+};
+
+MultiExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitMultiExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+function BinExpressionContext(parser, ctx) {
+	ExprContext.call(this, parser);
+    this.op = null; // Token;
+    ExprContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+BinExpressionContext.prototype = Object.create(ExprContext.prototype);
+BinExpressionContext.prototype.constructor = BinExpressionContext;
+
+CashParser.BinExpressionContext = BinExpressionContext;
+
+BinExpressionContext.prototype.expr = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(ExprContext);
+    } else {
+        return this.getTypedRuleContext(ExprContext,i);
+    }
+};
+
+BinExpressionContext.prototype.OP_AND = function() {
+    return this.getToken(CashParser.OP_AND, 0);
+};
+
+BinExpressionContext.prototype.OP_OR = function() {
+    return this.getToken(CashParser.OP_OR, 0);
+};
+BinExpressionContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterBinExpression(this);
+	}
+};
+
+BinExpressionContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitBinExpression(this);
+	}
+};
+
+BinExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitBinExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+function LabelExpressionContext(parser, ctx) {
+	ExprContext.call(this, parser);
+    ExprContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+LabelExpressionContext.prototype = Object.create(ExprContext.prototype);
+LabelExpressionContext.prototype.constructor = LabelExpressionContext;
+
+CashParser.LabelExpressionContext = LabelExpressionContext;
+
+LabelExpressionContext.prototype.LABEL = function() {
     return this.getToken(CashParser.LABEL, 0);
 };
-
-ExprContext.prototype.OP_POW = function() {
-    return this.getToken(CashParser.OP_POW, 0);
-};
-
-ExprContext.prototype.OP_MULTIPLY = function() {
-    return this.getToken(CashParser.OP_MULTIPLY, 0);
-};
-
-ExprContext.prototype.OP_DIVIDE = function() {
-    return this.getToken(CashParser.OP_DIVIDE, 0);
-};
-
-ExprContext.prototype.enterRule = function(listener) {
+LabelExpressionContext.prototype.enterRule = function(listener) {
     if(listener instanceof CashListener ) {
-        listener.enterExpr(this);
+        listener.enterLabelExpression(this);
 	}
 };
 
-ExprContext.prototype.exitRule = function(listener) {
+LabelExpressionContext.prototype.exitRule = function(listener) {
     if(listener instanceof CashListener ) {
-        listener.exitExpr(this);
+        listener.exitLabelExpression(this);
 	}
 };
 
-ExprContext.prototype.accept = function(visitor) {
+LabelExpressionContext.prototype.accept = function(visitor) {
     if ( visitor instanceof CashVisitor ) {
-        return visitor.visitExpr(this);
+        return visitor.visitLabelExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+function ParExpressionContext(parser, ctx) {
+	ExprContext.call(this, parser);
+    ExprContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+ParExpressionContext.prototype = Object.create(ExprContext.prototype);
+ParExpressionContext.prototype.constructor = ParExpressionContext;
+
+CashParser.ParExpressionContext = ParExpressionContext;
+
+ParExpressionContext.prototype.L_PAR = function() {
+    return this.getToken(CashParser.L_PAR, 0);
+};
+
+ParExpressionContext.prototype.expr = function() {
+    return this.getTypedRuleContext(ExprContext,0);
+};
+
+ParExpressionContext.prototype.R_PAR = function() {
+    return this.getToken(CashParser.R_PAR, 0);
+};
+ParExpressionContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterParExpression(this);
+	}
+};
+
+ParExpressionContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitParExpression(this);
+	}
+};
+
+ParExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitParExpression(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+function FuncExpressionContext(parser, ctx) {
+	ExprContext.call(this, parser);
+    ExprContext.prototype.copyFrom.call(this, ctx);
+    return this;
+}
+
+FuncExpressionContext.prototype = Object.create(ExprContext.prototype);
+FuncExpressionContext.prototype.constructor = FuncExpressionContext;
+
+CashParser.FuncExpressionContext = FuncExpressionContext;
+
+FuncExpressionContext.prototype.func_call = function() {
+    return this.getTypedRuleContext(Func_callContext,0);
+};
+FuncExpressionContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterFuncExpression(this);
+	}
+};
+
+FuncExpressionContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitFuncExpression(this);
+	}
+};
+
+FuncExpressionContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitFuncExpression(this);
     } else {
         return visitor.visitChildren(this);
     }
@@ -951,132 +1425,156 @@ CashParser.prototype.expr = function(_p) {
     var _parentState = this.state;
     var localctx = new ExprContext(this, this._ctx, _parentState);
     var _prevctx = localctx;
-    var _startState = 14;
-    this.enterRecursionRule(localctx, 14, CashParser.RULE_expr, _p);
+    var _startState = 16;
+    this.enterRecursionRule(localctx, 16, CashParser.RULE_expr, _p);
     var _la = 0; // Token type
     try {
         this.enterOuterAlt(localctx, 1);
-        this.state = 85;
+        this.state = 98;
         this._errHandler.sync(this);
-        var la_ = this._interp.adaptivePredict(this._input,7,this._ctx);
+        var la_ = this._interp.adaptivePredict(this._input,4,this._ctx);
         switch(la_) {
         case 1:
-            this.state = 74;
+            localctx = new ParExpressionContext(this, localctx);
+            this._ctx = localctx;
+            _prevctx = localctx;
+
+            this.state = 91;
             this.match(CashParser.L_PAR);
-            this.state = 75;
+            this.state = 92;
             this.expr(0);
-            this.state = 76;
+            this.state = 93;
             this.match(CashParser.R_PAR);
             break;
 
         case 2:
-            this.state = 79;
-            this._errHandler.sync(this);
-            _la = this._input.LA(1);
-            if(_la===CashParser.OP_PLUS || _la===CashParser.OP_SUB) {
-                this.state = 78;
-                _la = this._input.LA(1);
-                if(!(_la===CashParser.OP_PLUS || _la===CashParser.OP_SUB)) {
-                this._errHandler.recoverInline(this);
-                }
-                else {
-                	this._errHandler.reportMatch(this);
-                    this.consume();
-                }
-            }
-
-            this.state = 81;
-            this.match(CashParser.NUM_LIT);
-            break;
-
-        case 3:
-            this.state = 82;
-            this.match(CashParser.STR_LIT);
-            break;
-
-        case 4:
-            this.state = 83;
+            localctx = new FuncExpressionContext(this, localctx);
+            this._ctx = localctx;
+            _prevctx = localctx;
+            this.state = 95;
             this.func_call();
             break;
 
-        case 5:
-            this.state = 84;
+        case 3:
+            localctx = new LabelExpressionContext(this, localctx);
+            this._ctx = localctx;
+            _prevctx = localctx;
+            this.state = 96;
             this.match(CashParser.LABEL);
+            break;
+
+        case 4:
+            localctx = new AtomExpressionContext(this, localctx);
+            this._ctx = localctx;
+            _prevctx = localctx;
+            this.state = 97;
+            this.atom();
             break;
 
         }
         this._ctx.stop = this._input.LT(-1);
-        this.state = 98;
+        this.state = 120;
         this._errHandler.sync(this);
-        var _alt = this._interp.adaptivePredict(this._input,9,this._ctx)
+        var _alt = this._interp.adaptivePredict(this._input,6,this._ctx)
         while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
             if(_alt===1) {
                 if(this._parseListeners!==null) {
                     this.triggerExitRuleEvent();
                 }
                 _prevctx = localctx;
-                this.state = 96;
+                this.state = 118;
                 this._errHandler.sync(this);
-                var la_ = this._interp.adaptivePredict(this._input,8,this._ctx);
+                var la_ = this._interp.adaptivePredict(this._input,5,this._ctx);
                 switch(la_) {
                 case 1:
-                    localctx = new ExprContext(this, _parentctx, _parentState);
+                    localctx = new PowExpressionContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, CashParser.RULE_expr);
-                    this.state = 87;
-                    if (!( this.precpred(this._ctx, 8))) {
-                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 8)");
+                    this.state = 100;
+                    if (!( this.precpred(this._ctx, 9))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 9)");
                     }
-                    this.state = 88;
-                    this.match(CashParser.OP_POW);
-                    this.state = 89;
-                    this.expr(9);
+                    this.state = 101;
+                    localctx.op = this.op_pow();
+                    this.state = 102;
+                    localctx.right = this.expr(10);
                     break;
 
                 case 2:
-                    localctx = new ExprContext(this, _parentctx, _parentState);
+                    localctx = new MultiExpressionContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, CashParser.RULE_expr);
-                    this.state = 90;
-                    if (!( this.precpred(this._ctx, 7))) {
-                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 7)");
+                    this.state = 104;
+                    if (!( this.precpred(this._ctx, 8))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 8)");
                     }
-                    this.state = 91;
-                    _la = this._input.LA(1);
-                    if(!(_la===CashParser.OP_MULTIPLY || _la===CashParser.OP_DIVIDE)) {
-                    this._errHandler.recoverInline(this);
-                    }
-                    else {
-                    	this._errHandler.reportMatch(this);
-                        this.consume();
-                    }
-                    this.state = 92;
-                    this.expr(8);
+                    this.state = 105;
+                    localctx.op = this.op_multi();
+                    this.state = 106;
+                    localctx.right = this.expr(9);
                     break;
 
                 case 3:
-                    localctx = new ExprContext(this, _parentctx, _parentState);
+                    localctx = new AddExpressionContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, CashParser.RULE_expr);
-                    this.state = 93;
-                    if (!( this.precpred(this._ctx, 6))) {
-                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 6)");
+                    this.state = 108;
+                    if (!( this.precpred(this._ctx, 7))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 7)");
                     }
-                    this.state = 94;
+                    this.state = 109;
+                    localctx.op = this.op_add();
+                    this.state = 110;
+                    localctx.right = this.expr(8);
+                    break;
+
+                case 4:
+                    localctx = new BinExpressionContext(this, new ExprContext(this, _parentctx, _parentState));
+                    this.pushNewRecursionContext(localctx, _startState, CashParser.RULE_expr);
+                    this.state = 112;
+                    if (!( this.precpred(this._ctx, 3))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 3)");
+                    }
+                    this.state = 113;
+                    localctx.op = this._input.LT(1);
                     _la = this._input.LA(1);
-                    if(!(_la===CashParser.OP_PLUS || _la===CashParser.OP_SUB)) {
-                    this._errHandler.recoverInline(this);
+                    if(!(_la===CashParser.OP_AND || _la===CashParser.OP_OR)) {
+                        localctx.op = this._errHandler.recoverInline(this);
                     }
                     else {
                     	this._errHandler.reportMatch(this);
                         this.consume();
                     }
-                    this.state = 95;
-                    this.expr(7);
+                    this.state = 114;
+                    this.expr(4);
+                    break;
+
+                case 5:
+                    localctx = new CompExpressionContext(this, new ExprContext(this, _parentctx, _parentState));
+                    this.pushNewRecursionContext(localctx, _startState, CashParser.RULE_expr);
+                    this.state = 115;
+                    if (!( this.precpred(this._ctx, 2))) {
+                        throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
+                    }
+                    this.state = 116;
+                    localctx.op = this._input.LT(1);
+                    _la = this._input.LA(1);
+                    if(!((((_la) & ~0x1f) == 0 && ((1 << _la) & ((1 << CashParser.OP_EQ) | (1 << CashParser.OP_GT) | (1 << CashParser.OP_GE) | (1 << CashParser.OP_LT) | (1 << CashParser.OP_LE))) !== 0))) {
+                        localctx.op = this._errHandler.recoverInline(this);
+                    }
+                    else {
+                    	this._errHandler.reportMatch(this);
+                        this.consume();
+                    }
+                    this.state = 117;
+                    this.expr(3);
                     break;
 
                 } 
             }
-            this.state = 100;
+            this.state = 122;
             this._errHandler.sync(this);
-            _alt = this._interp.adaptivePredict(this._input,9,this._ctx);
+            _alt = this._interp.adaptivePredict(this._input,6,this._ctx);
         }
 
     } catch( error) {
@@ -1093,10 +1591,776 @@ CashParser.prototype.expr = function(_p) {
     return localctx;
 };
 
+function AtomContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = CashParser.RULE_atom;
+    return this;
+}
+
+AtomContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+AtomContext.prototype.constructor = AtomContext;
+
+AtomContext.prototype.STR_LIT = function() {
+    return this.getToken(CashParser.STR_LIT, 0);
+};
+
+AtomContext.prototype.NUM_LIT = function() {
+    return this.getToken(CashParser.NUM_LIT, 0);
+};
+
+AtomContext.prototype.OP_PLUS = function() {
+    return this.getToken(CashParser.OP_PLUS, 0);
+};
+
+AtomContext.prototype.OP_SUB = function() {
+    return this.getToken(CashParser.OP_SUB, 0);
+};
+
+AtomContext.prototype.KW_TRUE = function() {
+    return this.getToken(CashParser.KW_TRUE, 0);
+};
+
+AtomContext.prototype.KW_FALSE = function() {
+    return this.getToken(CashParser.KW_FALSE, 0);
+};
+
+AtomContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterAtom(this);
+	}
+};
+
+AtomContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitAtom(this);
+	}
+};
+
+AtomContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitAtom(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+CashParser.AtomContext = AtomContext;
+
+CashParser.prototype.atom = function() {
+
+    var localctx = new AtomContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 18, CashParser.RULE_atom);
+    var _la = 0; // Token type
+    try {
+        this.state = 129;
+        this._errHandler.sync(this);
+        switch(this._input.LA(1)) {
+        case CashParser.STR_LIT:
+            this.enterOuterAlt(localctx, 1);
+            this.state = 123;
+            this.match(CashParser.STR_LIT);
+            break;
+        case CashParser.OP_PLUS:
+        case CashParser.OP_SUB:
+        case CashParser.NUM_LIT:
+            this.enterOuterAlt(localctx, 2);
+            this.state = 125;
+            this._errHandler.sync(this);
+            _la = this._input.LA(1);
+            if(_la===CashParser.OP_PLUS || _la===CashParser.OP_SUB) {
+                this.state = 124;
+                _la = this._input.LA(1);
+                if(!(_la===CashParser.OP_PLUS || _la===CashParser.OP_SUB)) {
+                this._errHandler.recoverInline(this);
+                }
+                else {
+                	this._errHandler.reportMatch(this);
+                    this.consume();
+                }
+            }
+
+            this.state = 127;
+            this.match(CashParser.NUM_LIT);
+            break;
+        case CashParser.KW_TRUE:
+        case CashParser.KW_FALSE:
+            this.enterOuterAlt(localctx, 3);
+            this.state = 128;
+            _la = this._input.LA(1);
+            if(!(_la===CashParser.KW_TRUE || _la===CashParser.KW_FALSE)) {
+            this._errHandler.recoverInline(this);
+            }
+            else {
+            	this._errHandler.reportMatch(this);
+                this.consume();
+            }
+            break;
+        default:
+            throw new antlr4.error.NoViableAltException(this);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function Op_powContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = CashParser.RULE_op_pow;
+    return this;
+}
+
+Op_powContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+Op_powContext.prototype.constructor = Op_powContext;
+
+Op_powContext.prototype.OP_POW = function() {
+    return this.getToken(CashParser.OP_POW, 0);
+};
+
+Op_powContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterOp_pow(this);
+	}
+};
+
+Op_powContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitOp_pow(this);
+	}
+};
+
+Op_powContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitOp_pow(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+CashParser.Op_powContext = Op_powContext;
+
+CashParser.prototype.op_pow = function() {
+
+    var localctx = new Op_powContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 20, CashParser.RULE_op_pow);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 131;
+        this.match(CashParser.OP_POW);
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function Op_multiContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = CashParser.RULE_op_multi;
+    return this;
+}
+
+Op_multiContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+Op_multiContext.prototype.constructor = Op_multiContext;
+
+Op_multiContext.prototype.OP_MULTIPLY = function() {
+    return this.getToken(CashParser.OP_MULTIPLY, 0);
+};
+
+Op_multiContext.prototype.OP_DIVIDE = function() {
+    return this.getToken(CashParser.OP_DIVIDE, 0);
+};
+
+Op_multiContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterOp_multi(this);
+	}
+};
+
+Op_multiContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitOp_multi(this);
+	}
+};
+
+Op_multiContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitOp_multi(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+CashParser.Op_multiContext = Op_multiContext;
+
+CashParser.prototype.op_multi = function() {
+
+    var localctx = new Op_multiContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 22, CashParser.RULE_op_multi);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 133;
+        _la = this._input.LA(1);
+        if(!(_la===CashParser.OP_MULTIPLY || _la===CashParser.OP_DIVIDE)) {
+        this._errHandler.recoverInline(this);
+        }
+        else {
+        	this._errHandler.reportMatch(this);
+            this.consume();
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function Op_addContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = CashParser.RULE_op_add;
+    return this;
+}
+
+Op_addContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+Op_addContext.prototype.constructor = Op_addContext;
+
+Op_addContext.prototype.OP_PLUS = function() {
+    return this.getToken(CashParser.OP_PLUS, 0);
+};
+
+Op_addContext.prototype.OP_SUB = function() {
+    return this.getToken(CashParser.OP_SUB, 0);
+};
+
+Op_addContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterOp_add(this);
+	}
+};
+
+Op_addContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitOp_add(this);
+	}
+};
+
+Op_addContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitOp_add(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+CashParser.Op_addContext = Op_addContext;
+
+CashParser.prototype.op_add = function() {
+
+    var localctx = new Op_addContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 24, CashParser.RULE_op_add);
+    var _la = 0; // Token type
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 135;
+        _la = this._input.LA(1);
+        if(!(_la===CashParser.OP_PLUS || _la===CashParser.OP_SUB)) {
+        this._errHandler.recoverInline(this);
+        }
+        else {
+        	this._errHandler.reportMatch(this);
+            this.consume();
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function Func_nameContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = CashParser.RULE_func_name;
+    return this;
+}
+
+Func_nameContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+Func_nameContext.prototype.constructor = Func_nameContext;
+
+Func_nameContext.prototype.LABEL = function() {
+    return this.getToken(CashParser.LABEL, 0);
+};
+
+Func_nameContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterFunc_name(this);
+	}
+};
+
+Func_nameContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitFunc_name(this);
+	}
+};
+
+Func_nameContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitFunc_name(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+CashParser.Func_nameContext = Func_nameContext;
+
+CashParser.prototype.func_name = function() {
+
+    var localctx = new Func_nameContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 26, CashParser.RULE_func_name);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 137;
+        this.match(CashParser.LABEL);
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function Statement_blockContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = CashParser.RULE_statement_block;
+    return this;
+}
+
+Statement_blockContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+Statement_blockContext.prototype.constructor = Statement_blockContext;
+
+Statement_blockContext.prototype.L_BRACE = function() {
+    return this.getToken(CashParser.L_BRACE, 0);
+};
+
+Statement_blockContext.prototype.R_BRACE = function() {
+    return this.getToken(CashParser.R_BRACE, 0);
+};
+
+Statement_blockContext.prototype.statement = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(StatementContext);
+    } else {
+        return this.getTypedRuleContext(StatementContext,i);
+    }
+};
+
+Statement_blockContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterStatement_block(this);
+	}
+};
+
+Statement_blockContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitStatement_block(this);
+	}
+};
+
+Statement_blockContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitStatement_block(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+CashParser.Statement_blockContext = Statement_blockContext;
+
+CashParser.prototype.statement_block = function() {
+
+    var localctx = new Statement_blockContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 28, CashParser.RULE_statement_block);
+    var _la = 0; // Token type
+    try {
+        this.state = 148;
+        this._errHandler.sync(this);
+        switch(this._input.LA(1)) {
+        case CashParser.L_BRACE:
+            this.enterOuterAlt(localctx, 1);
+            this.state = 139;
+            this.match(CashParser.L_BRACE);
+            this.state = 141; 
+            this._errHandler.sync(this);
+            _la = this._input.LA(1);
+            do {
+                this.state = 140;
+                this.statement();
+                this.state = 143; 
+                this._errHandler.sync(this);
+                _la = this._input.LA(1);
+            } while(((((_la - 2)) & ~0x1f) == 0 && ((1 << (_la - 2)) & ((1 << (CashParser.KW_LET - 2)) | (1 << (CashParser.KW_CONST - 2)) | (1 << (CashParser.KW_IF - 2)) | (1 << (CashParser.KW_WHILE - 2)) | (1 << (CashParser.KW_FUNC - 2)) | (1 << (CashParser.KW_TRUE - 2)) | (1 << (CashParser.KW_FALSE - 2)) | (1 << (CashParser.OP_PLUS - 2)) | (1 << (CashParser.OP_SUB - 2)) | (1 << (CashParser.L_PAR - 2)) | (1 << (CashParser.LABEL - 2)) | (1 << (CashParser.STR_LIT - 2)) | (1 << (CashParser.NUM_LIT - 2)) | (1 << (CashParser.COMMENT - 2)) | (1 << (CashParser.BLOCK_COMMENT - 2)))) !== 0));
+            this.state = 145;
+            this.match(CashParser.R_BRACE);
+            break;
+        case CashParser.KW_LET:
+        case CashParser.KW_CONST:
+        case CashParser.KW_IF:
+        case CashParser.KW_WHILE:
+        case CashParser.KW_FUNC:
+        case CashParser.KW_TRUE:
+        case CashParser.KW_FALSE:
+        case CashParser.OP_PLUS:
+        case CashParser.OP_SUB:
+        case CashParser.L_PAR:
+        case CashParser.LABEL:
+        case CashParser.STR_LIT:
+        case CashParser.NUM_LIT:
+        case CashParser.COMMENT:
+        case CashParser.BLOCK_COMMENT:
+            this.enterOuterAlt(localctx, 2);
+            this.state = 147;
+            this.statement();
+            break;
+        default:
+            throw new antlr4.error.NoViableAltException(this);
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function If_statementContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = CashParser.RULE_if_statement;
+    return this;
+}
+
+If_statementContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+If_statementContext.prototype.constructor = If_statementContext;
+
+If_statementContext.prototype.KW_IF = function(i) {
+	if(i===undefined) {
+		i = null;
+	}
+    if(i===null) {
+        return this.getTokens(CashParser.KW_IF);
+    } else {
+        return this.getToken(CashParser.KW_IF, i);
+    }
+};
+
+
+If_statementContext.prototype.expr = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(ExprContext);
+    } else {
+        return this.getTypedRuleContext(ExprContext,i);
+    }
+};
+
+If_statementContext.prototype.statement_block = function(i) {
+    if(i===undefined) {
+        i = null;
+    }
+    if(i===null) {
+        return this.getTypedRuleContexts(Statement_blockContext);
+    } else {
+        return this.getTypedRuleContext(Statement_blockContext,i);
+    }
+};
+
+If_statementContext.prototype.KW_ELSE = function(i) {
+	if(i===undefined) {
+		i = null;
+	}
+    if(i===null) {
+        return this.getTokens(CashParser.KW_ELSE);
+    } else {
+        return this.getToken(CashParser.KW_ELSE, i);
+    }
+};
+
+
+If_statementContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterIf_statement(this);
+	}
+};
+
+If_statementContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitIf_statement(this);
+	}
+};
+
+If_statementContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitIf_statement(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+CashParser.If_statementContext = If_statementContext;
+
+CashParser.prototype.if_statement = function() {
+
+    var localctx = new If_statementContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 30, CashParser.RULE_if_statement);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 150;
+        this.match(CashParser.KW_IF);
+        this.state = 151;
+        this.expr(0);
+        this.state = 152;
+        this.statement_block();
+        this.state = 160;
+        this._errHandler.sync(this);
+        var _alt = this._interp.adaptivePredict(this._input,11,this._ctx)
+        while(_alt!=2 && _alt!=antlr4.atn.ATN.INVALID_ALT_NUMBER) {
+            if(_alt===1) {
+                this.state = 153;
+                this.match(CashParser.KW_ELSE);
+                this.state = 154;
+                this.match(CashParser.KW_IF);
+                this.state = 155;
+                this.expr(0);
+                this.state = 156;
+                this.statement_block(); 
+            }
+            this.state = 162;
+            this._errHandler.sync(this);
+            _alt = this._interp.adaptivePredict(this._input,11,this._ctx);
+        }
+
+        this.state = 165;
+        this._errHandler.sync(this);
+        var la_ = this._interp.adaptivePredict(this._input,12,this._ctx);
+        if(la_===1) {
+            this.state = 163;
+            this.match(CashParser.KW_ELSE);
+            this.state = 164;
+            this.statement_block();
+
+        }
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
+function While_statementContext(parser, parent, invokingState) {
+	if(parent===undefined) {
+	    parent = null;
+	}
+	if(invokingState===undefined || invokingState===null) {
+		invokingState = -1;
+	}
+	antlr4.ParserRuleContext.call(this, parent, invokingState);
+    this.parser = parser;
+    this.ruleIndex = CashParser.RULE_while_statement;
+    return this;
+}
+
+While_statementContext.prototype = Object.create(antlr4.ParserRuleContext.prototype);
+While_statementContext.prototype.constructor = While_statementContext;
+
+While_statementContext.prototype.KW_WHILE = function() {
+    return this.getToken(CashParser.KW_WHILE, 0);
+};
+
+While_statementContext.prototype.expr = function() {
+    return this.getTypedRuleContext(ExprContext,0);
+};
+
+While_statementContext.prototype.statement_block = function() {
+    return this.getTypedRuleContext(Statement_blockContext,0);
+};
+
+While_statementContext.prototype.enterRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.enterWhile_statement(this);
+	}
+};
+
+While_statementContext.prototype.exitRule = function(listener) {
+    if(listener instanceof CashListener ) {
+        listener.exitWhile_statement(this);
+	}
+};
+
+While_statementContext.prototype.accept = function(visitor) {
+    if ( visitor instanceof CashVisitor ) {
+        return visitor.visitWhile_statement(this);
+    } else {
+        return visitor.visitChildren(this);
+    }
+};
+
+
+
+
+CashParser.While_statementContext = While_statementContext;
+
+CashParser.prototype.while_statement = function() {
+
+    var localctx = new While_statementContext(this, this._ctx, this.state);
+    this.enterRule(localctx, 32, CashParser.RULE_while_statement);
+    try {
+        this.enterOuterAlt(localctx, 1);
+        this.state = 167;
+        this.match(CashParser.KW_WHILE);
+        this.state = 168;
+        this.expr(0);
+        this.state = 169;
+        this.statement_block();
+    } catch (re) {
+    	if(re instanceof antlr4.error.RecognitionException) {
+	        localctx.exception = re;
+	        this._errHandler.reportError(this, re);
+	        this._errHandler.recover(this, re);
+	    } else {
+	    	throw re;
+	    }
+    } finally {
+        this.exitRule();
+    }
+    return localctx;
+};
+
 
 CashParser.prototype.sempred = function(localctx, ruleIndex, predIndex) {
 	switch(ruleIndex) {
-	case 7:
+	case 8:
 			return this.expr_sempred(localctx, predIndex);
     default:
         throw "No predicate with index:" + ruleIndex;
@@ -1106,11 +2370,15 @@ CashParser.prototype.sempred = function(localctx, ruleIndex, predIndex) {
 CashParser.prototype.expr_sempred = function(localctx, predIndex) {
 	switch(predIndex) {
 		case 0:
-			return this.precpred(this._ctx, 8);
+			return this.precpred(this._ctx, 9);
 		case 1:
-			return this.precpred(this._ctx, 7);
+			return this.precpred(this._ctx, 8);
 		case 2:
-			return this.precpred(this._ctx, 6);
+			return this.precpred(this._ctx, 7);
+		case 3:
+			return this.precpred(this._ctx, 3);
+		case 4:
+			return this.precpred(this._ctx, 2);
 		default:
 			throw "No predicate with index:" + predIndex;
 	}
