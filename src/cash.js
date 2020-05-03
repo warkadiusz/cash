@@ -83,8 +83,10 @@ CashVisitor.prototype.visitVar_assignment = function (ctx) {
   if (typeof vars_n_consts[newVarName] !== "undefined") {
     throwRuntimeError("Cannot redeclare variable " + newVarName, ctx);
   }
+  let value = this.visit(ctx.value);
+  value = Array.isArray(value) ? value[0] : value;
 
-  vars_n_consts[newVarName] = new Variable(newVarName, this.visit(ctx.value)[0], false);
+  vars_n_consts[newVarName] = new Variable(newVarName, value, false);
 };
 
 CashVisitor.prototype.visitConst_assignment = function (ctx) {
@@ -102,6 +104,10 @@ CashVisitor.prototype.visitAssign_to_label = function (ctx) {
 
   if (typeof vars_n_consts[name] === "undefined") {
     throwRuntimeError("Undefined variable " + name, ctx);
+  }
+
+  if(vars_n_consts[name].is_const === true) {
+    throwRuntimeError("Cannot re-assign the constant " + name, ctx);
   }
 
   vars_n_consts[name].value = this.visit(ctx.value)[0];

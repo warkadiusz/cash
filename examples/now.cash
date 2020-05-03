@@ -1,8 +1,8 @@
 $print(20 * 4 + 5 / 5)
 let a = 5
-a = 13
-const b = 7
-print((a + b + 12) * 10)
+let b = 12
+let c = a + b
+print(c)
 /$
 const PI = 3.14159
 const NEG_PI = -3.1415
