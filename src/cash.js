@@ -1,10 +1,10 @@
 const antlr = require('antlr4')
 const CashLexer = require('./parser/CashLexer').CashLexer
 const CashParser = require('./parser/CashParser').CashParser
-const CashListener = require('./parser/CashListener').CashListener
 const CashVisitor = require('./parser/CashVisitor').CashVisitor
 const fs = require('fs')
 const Operators = require('./Operators.js')
+const Variable = require('./Variable.js')
 
 const inputArgs = process.argv.slice(2);
 let code;
@@ -27,51 +27,17 @@ let lexer = new CashLexer(inputStream);
 let tokens = new antlr.CommonTokenStream(lexer);
 let parser = new CashParser(tokens);
 parser.buildParseTrees = true;
-var tree = parser.program();
-
-let symbolicNamesDict = {};
-parser.symbolicNames.forEach((p, k) => {
-  symbolicNamesDict[k] = p;
-});
-
-const DATA_TYPES = {
-  STR_LIT: "STR_LIT",
-  NUM_LIT: "NUM_LIT",
-  LABEL: "LABEL"
-};
-
-class variable {
-  constructor(name, value, type, is_const) {
-    this.name = name;
-    this.value = value;
-    this.type = type;
-    this.is_const = is_const;
-  }
-}
+let tree = parser.program();
 
 let vars_n_consts = {};
 let functions = {};
 
-function get_symbol_type(node) {
-  return symbolicNamesDict[node.symbol.type];
+function throwRuntimeError(err, ctx) {
+  throw new Error(err + " at line " + ctx.start.line + " column " + ctx.start.column)
 }
-
-function strip_str(str) {
-  return str.replace(/^"/, "").replace(/"$/, "")
-}
-
-function strip_if_str(node) {
-  let type = symbolicNamesDict[node.symbol.type];
-  if (type === "STR_LIT") {
-    return strip_str(node.getText());
-  }
-
-  return node.getText();
-}
-
 
 function declare_var_or_const(data) {
-  const is_assigning = data.children.length !== 4;
+  /*const is_assigning = data.children.length !== 4;
 
   let is_const = false;
   let name = null;
@@ -108,34 +74,68 @@ function declare_var_or_const(data) {
   } else {
     new_obj = new variable(name, value, type, is_const);
     vars_n_consts[name] = new_obj;
-  }
+  }*/
 }
 
-CashVisitor.prototype.visitVar_assignment = ctx => {
-  declare_var_or_const(ctx)
+CashVisitor.prototype.visitVar_assignment = function (ctx) {
+  let newVarName = ctx.vlabel.getText();
+
+  if (typeof vars_n_consts[newVarName] !== "undefined") {
+    throwRuntimeError("Cannot redeclare variable " + newVarName, ctx);
+  }
+
+  vars_n_consts[newVarName] = new Variable(newVarName, this.visit(ctx.value)[0], false);
 };
 
-CashVisitor.prototype.visitConst_assignment = ctx => {
-  declare_var_or_const(ctx)
+CashVisitor.prototype.visitConst_assignment = function (ctx) {
+  let newConstName = ctx.clabel.getText();
+
+  if (typeof vars_n_consts[newConstName] !== "undefined") {
+    throwRuntimeError("Cannot redeclare variable/constant " + newConstName, ctx);
+  }
+
+  vars_n_consts[newConstName] = new Variable(newConstName, this.visit(ctx.value)[0], true);
 }
 
-CashVisitor.prototype.visitAssign_to_label = ctx => {
-  declare_var_or_const(ctx)
+CashVisitor.prototype.visitAssign_to_label = function (ctx) {
+  let name = ctx.llabel.getText();
+
+  if (typeof vars_n_consts[name] === "undefined") {
+    throwRuntimeError("Undefined variable " + name, ctx);
+  }
+
+  vars_n_consts[name].value = this.visit(ctx.value)[0];
 }
 
-CashVisitor.prototype.visitFunc_call = function(ctx) {
+CashVisitor.prototype.visitLabelExpression = function (ctx) {
+  const varConstName = ctx.getText();
+  if (typeof vars_n_consts[varConstName] == "undefined") {
+    throwRuntimeError("Undefined variable/constant " + varConstName, ctx);
+  }
+
+  return vars_n_consts[varConstName].value
+}
+
+CashVisitor.prototype.visitParExpression = function (ctx) {
+  return this.visit(ctx.exprx);
+}
+
+CashVisitor.prototype.visitFunc_call = function (ctx) {
   let funcName = ctx.name.getText();
 
-  if(funcName === "print") {
-    ctx.args.forEach(c => console.log(this.visit(c)))
+  if (funcName === "print") {
+    ctx.args.forEach(c => {
+      console.log(this.visit(c))
+      // console.log(this.visit(c))
+    })
   }
 };
 
-CashVisitor.prototype.visitAtom = function(ctx) {
+CashVisitor.prototype.visitAtom = function (ctx) {
   return parseFloat(ctx.getText())
 }
 
-CashVisitor.prototype.visitAddExpression = function(ctx) {
+CashVisitor.prototype.visitAddExpression = function (ctx) {
   let op = ctx.op.getText();
   let left = parseFloat(this.visit(ctx.left));
   let right = parseFloat(this.visit(ctx.right));
@@ -147,10 +147,10 @@ CashVisitor.prototype.visitAddExpression = function(ctx) {
       return left + right;
   }
 
-  throw "Unsupported operator '" + op + "'";
+  throwRuntimeError("Unsupported operator '" + op + "'", ctx);
 }
 
-CashVisitor.prototype.visitMultiExpression = function(ctx) {
+CashVisitor.prototype.visitMultiExpression = function (ctx) {
   let op = ctx.op.getText();
   let left = parseFloat(this.visit(ctx.left));
   let right = parseFloat(this.visit(ctx.right));
@@ -162,16 +162,21 @@ CashVisitor.prototype.visitMultiExpression = function(ctx) {
       return left / right;
   }
 
-  throw "Unsupported operator '" + op + "'";
+  throwRuntimeError("Unsupported operator '" + op + "'", ctx)
 }
 
-CashVisitor.prototype.visitStatement = function(ctx) {
+CashVisitor.prototype.visitStatement = function (ctx) {
   return ctx.children.forEach(c => this.visit(c))
 }
 
-CashVisitor.prototype.visitProgram = function(ctx) {
+CashVisitor.prototype.visitProgram = function (ctx) {
   return ctx.children.forEach(c => this.visit(c))
 }
 
 visitor = new CashVisitor();
-visitor.visit(tree)
+try {
+  visitor.visit(tree)
+} catch (e) {
+  console.error(e)
+  process.exit(1)
+}
