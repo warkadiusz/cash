@@ -1,4 +1,4 @@
-// Generated from Cash.g4 by ANTLR 4.7.1
+// Generated from Cash.g4 by ANTLR 4.8
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
@@ -158,6 +158,12 @@ CashVisitor.prototype.visitIf_statement = function(ctx) {
 
 // Visit a parse tree produced by CashParser#while_statement.
 CashVisitor.prototype.visitWhile_statement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by CashParser#label.
+CashVisitor.prototype.visitLabel = function(ctx) {
   return this.visitChildren(ctx);
 };
 

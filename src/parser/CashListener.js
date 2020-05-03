@@ -1,4 +1,4 @@
-// Generated from Cash.g4 by ANTLR 4.7.1
+// Generated from Cash.g4 by ANTLR 4.8
 // jshint ignore: start
 var antlr4 = require('antlr4/index');
 
@@ -233,6 +233,15 @@ CashListener.prototype.enterWhile_statement = function(ctx) {
 
 // Exit a parse tree produced by CashParser#while_statement.
 CashListener.prototype.exitWhile_statement = function(ctx) {
+};
+
+
+// Enter a parse tree produced by CashParser#label.
+CashListener.prototype.enterLabel = function(ctx) {
+};
+
+// Exit a parse tree produced by CashParser#label.
+CashListener.prototype.exitLabel = function(ctx) {
 };
 
 

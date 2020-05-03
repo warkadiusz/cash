@@ -11,22 +11,22 @@ statement :     var_assignment
                 | comment
                 | expr;
 
-var_assignment : KW_LET LABEL OP_ASSIGN expr;
-const_assignment : KW_CONST LABEL OP_ASSIGN expr;
+var_assignment : KW_LET vlabel=label OP_ASSIGN value=expr;
+const_assignment : KW_CONST clabel=label OP_ASSIGN value=expr;
 
-assign_to_label : LABEL OP_ASSIGN expr;
+assign_to_label : llabel=label OP_ASSIGN value=expr;
 
 comment : COMMENT | BLOCK_COMMENT;
 
-func_declaration : KW_FUNC LABEL L_BRACE statement* R_BRACE;
+func_declaration : KW_FUNC LABEL L_BRACE program R_BRACE;
 func_call : name=func_name L_PAR (args+=expr ',')* (args+=expr) R_PAR;
 
 expr : left=expr op=op_pow right=expr                       #powExpression
      | left=expr op=op_multi right=expr                     #multiExpression
      | left=expr op=op_add right=expr                       #addExpression
-     | L_PAR expr R_PAR                                     #parExpression
+     | L_PAR exprx=expr R_PAR                               #parExpression
      | func_call                                            #funcExpression
-     | LABEL                                                #labelExpression
+     | label                                                #labelExpression
      | expr op=(OP_AND | OP_OR) expr                        #binExpression
      | expr op=(OP_EQ | OP_GT | OP_GE | OP_LE | OP_LT) expr #compExpression
      | atom                                                 #atomExpression
@@ -49,6 +49,7 @@ if_statement : KW_IF expr statement_block (KW_ELSE KW_IF expr statement_block)* 
 while_statement : KW_WHILE expr statement_block ;
 
 fragment DIGIT : [0-9]+ ;
+label : LABEL;
 
 KW_LET   : 'let' ;
 KW_CONST : 'const' ;
