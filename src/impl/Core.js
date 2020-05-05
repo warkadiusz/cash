@@ -7,7 +7,9 @@ class Core {
 
   visitProgram(ctx, globalCtx) {
     this.stack.push(new StackFrame("Main", 1))
-    return ctx.children.forEach(c => globalCtx.visit(c))
+    let ret = ctx.children.forEach(c => globalCtx.visit(c))
+    this.stack.pop();
+    return ret;
   }
 
   visitStatement(ctx, globalCtx) {

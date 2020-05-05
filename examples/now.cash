@@ -9,6 +9,7 @@ func test() {
 }
 
 test()
+print(a)
 /$
 const PI = 3.14159
 const NEG_PI = -3.1415

@@ -1,4 +1,5 @@
 const RuntimeError = require('../misc/RuntimeError')
+const StackFrame = require('../misc/StackFrame')
 
 class FunctionsImpl {
   constructor(stack, functions) {
@@ -23,11 +24,19 @@ class FunctionsImpl {
       RuntimeError.throw("Calling undeclared function " + funcName, ctx);
     }
 
-    if (this.functions[funcName].constructor.name === "ProgramContext") {
-      return globalCtx.visit(this.functions[funcName]);
+    this.stack.push(new StackFrame(funcName, this.stack.getCurrentDepth()+1))
+
+    /** Declared function */
+    if (this.functions[funcName].constructor.name === "Statement_blockContext") {
+      let ret = globalCtx.visit(this.functions[funcName]);
+      this.stack.pop();
+      return ret;
     }
 
-    return this.functions[funcName](ctx.args_l.args, globalCtx);
+    /** Built-in function */
+    let ret = this.functions[funcName](ctx.args_l.args, globalCtx);
+    this.stack.pop();
+    return ret;
   }
 }
 

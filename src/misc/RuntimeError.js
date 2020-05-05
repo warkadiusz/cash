@@ -1,6 +1,9 @@
 const RuntimeError = {
   throw(err, ctx) {
-    throw new Error(err + " at line " + ctx.start.line + " column " + ctx.start.column)
+    console.error(err + " at line " + ctx.start.line + " column " + ctx.start.column)
+    console.error("Stack trace: ");
+    console.error(this.stack.print())
+    throw ""
   }
 }
 

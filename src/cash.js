@@ -4,6 +4,7 @@ const CashParser = require('./parser/CashParser').CashParser
 const CashVisitor = require('./parser/CashVisitor').CashVisitor
 const fs = require('fs')
 const StackClass = require('./misc/Stack')
+const RuntimeError = require('./misc/RuntimeError')
 
 const inputArgs = process.argv.slice(2);
 let code;
@@ -30,6 +31,7 @@ let tree = parser.program();
 
 const stack = new StackClass;
 let functionsDefinitions = {};
+RuntimeError.stack = stack;
 
 functionsDefinitions["print"] = function (argsList, context) {
   argsList.forEach(arg => {
