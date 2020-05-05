@@ -24,28 +24,28 @@ class FunctionsImpl {
     this.functions[funcName] = new Function(funcName, argsList, ctx.body);
   }
 
-  visitFuncCall(ctx, globalCtx) {
-    const funcName = ctx.name.getText();
+  visitFuncCall(callContext, visitor) {
+    const funcName = callContext.name.getText();
 
     if (typeof this.functions[funcName] === "undefined") {
-      RuntimeError.throw("Calling undeclared function " + funcName, ctx);
+      RuntimeError.throw("Calling undeclared function " + funcName, callContext);
     }
     const funcParameters = this.functions[funcName].argsList;
-    const actualParameters = ctx.args_l.args;
+    const actualParameters = callContext.args_l.args;
 
     if (actualParameters.length !== funcParameters.length) {
-      return this.argumentsMiscount(actualParameters.length, funcParameters.length, ctx);
+      return this.argumentsMiscount(actualParameters.length, funcParameters.length, callContext);
     }
 
     const stackFrame = new StackFrame(funcName, this.stack.getCurrentDepth() + 1);
     for (const arg in funcParameters) {
-      let actualParameter = globalCtx.visit(actualParameters[arg])
+      let actualParameter = visitor.visit(actualParameters[arg])
       if (typeof actualParameter === "undefined") {
         actualParameter = this.stack.peek().memory[actualParameters[arg].getText()];
       }
 
       if (typeof actualParameter === "undefined") {
-        RuntimeError.throw("Cannot establish parameter \"" + funcParameters[arg] + "\" value at function \"" + funcName + "\" call.", ctx);
+        RuntimeError.throw("Cannot establish parameter \"" + funcParameters[arg] + "\" value at function \"" + funcName + "\" call.", callContext);
       }
 
       stackFrame.memory[funcParameters[arg]] = actualParameter;
@@ -55,15 +55,15 @@ class FunctionsImpl {
 
     /** Declared function */
     if (this.functions[funcName].bodyContext.constructor.name === "Statement_blockContext") {
-      let ret = globalCtx.visit(this.functions[funcName].bodyContext);
+      let ret = visitor.visit(this.functions[funcName].bodyContext);
       this.stack.pop();
       return ret;
     }
 
     /** Built-in function */
-    let ret = this.functions[funcName].bodyContext(globalCtx, this.stack);
-    this.stack.pop();
-    return ret;
+    this.functions[funcName].bodyContext(callContext, visitor);
+    const frame = this.stack.pop();
+    return frame.returnValue;
   }
 
   argumentsMiscount(provided, expected, ctx) {

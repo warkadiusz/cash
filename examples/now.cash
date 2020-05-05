@@ -42,13 +42,5 @@ else {
 
 $/
 
-let i = 1
-let run = true
-while i<=10 && run {
-    print(i)
-    i = i+1;
-    if i==7 {
-        print("STOP");
-        run = false;
-    }
-}
+writeFile("/tmp/a", "LOL")
+print(readFile("/tmp/a"));

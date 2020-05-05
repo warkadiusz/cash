@@ -3,11 +3,10 @@ class StackFrame {
     this.name = name;
     this.depth = depth;
     this.memory = {};
+    this.returnValue = true;
   }
 
   print() {
-    //let spacing = "  ".repeat(this.depth);
-    //let msg = "\n----------- Depth " + this.depth + "\n";
     let msg = "Name: " + this.name + "\n";
     msg += "\tVariables/consts definitions: \n";
     for (const k in this.memory) {

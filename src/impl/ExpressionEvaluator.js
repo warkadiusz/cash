@@ -86,7 +86,11 @@ class ExpressionEvaluator {
   }
 
   visitAtomExpression(ctx, visitor) {
-    return visitor.visit(ctx.children[0])
+    return visitor.visit(ctx.children[0]);
+  }
+
+  visitFuncExpression(ctx, visitor) {
+    return visitor.visit(ctx.children[0]);
   }
 }
 

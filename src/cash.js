@@ -5,7 +5,7 @@ const CashVisitor = require('./parser/CashVisitor').CashVisitor
 const fs = require('fs')
 const StackClass = require('./misc/Stack')
 const RuntimeError = require('./misc/RuntimeError')
-const Function = require('./misc/Function')
+const StdLib = require('./stdlib/StdLib')
 
 const CoreClass = require('./impl/Core');
 const FunctionsClass = require('./impl/Functions');
@@ -37,12 +37,9 @@ parser.buildParseTrees = true;
 let tree = parser.program();
 
 const stack = new StackClass;
-let functionsDefinitions = {};
+let functionsDefinitions = StdLib.functions;
 RuntimeError.stack = stack;
-
-functionsDefinitions["print"] = new Function("print", ["msg"], function(visitor, stack) {
-  console.log(stack.peek().memory["msg"]);
-});
+StdLib.stack = stack;
 
 const CoreImpl = new CoreClass(stack);
 const FunctionsImpl = new FunctionsClass(stack, functionsDefinitions);
@@ -51,31 +48,68 @@ const ExpressionEvaluatorImpl = new ExpressionEvaluatorClass(stack);
 const ControlStructuresImpl = new ControlStructures(stack);
 
 /** Core */
-CashVisitor.prototype.visitStatement = function(ctx) { return CoreImpl.visitStatement(ctx, this); }
-CashVisitor.prototype.visitProgram = function(ctx) { return CoreImpl.visitProgram(ctx, this); }
-CashVisitor.prototype.visitAtom = function(ctx) { return CoreImpl.visitAtom(ctx, this); }
+CashVisitor.prototype.visitStatement = function (ctx) {
+  return CoreImpl.visitStatement(ctx, this);
+}
+CashVisitor.prototype.visitProgram = function (ctx) {
+  return CoreImpl.visitProgram(ctx, this);
+}
+CashVisitor.prototype.visitAtom = function (ctx) {
+  return CoreImpl.visitAtom(ctx, this);
+}
 
 /** Vars and constants */
-CashVisitor.prototype.visitVar_assignment = function (c) { return VariablesAndConstsImpl.visitVarAssignment(c, this) };
-CashVisitor.prototype.visitConst_assignment = function (c) { return VariablesAndConstsImpl.visitConstAssignment(c, this) };
-CashVisitor.prototype.visitAssign_to_label = function (c) { return VariablesAndConstsImpl.visitAssignToLabel(c, this) };
+CashVisitor.prototype.visitVar_assignment = function (c) {
+  return VariablesAndConstsImpl.visitVarAssignment(c, this)
+};
+CashVisitor.prototype.visitConst_assignment = function (c) {
+  return VariablesAndConstsImpl.visitConstAssignment(c, this)
+};
+CashVisitor.prototype.visitAssign_to_label = function (c) {
+  return VariablesAndConstsImpl.visitAssignToLabel(c, this)
+};
 
 /** Expression evaluator */
-CashVisitor.prototype.visitMultiExpression = function (c) { return ExpressionEvaluatorImpl.visitMultiExpression(c, this); };
-CashVisitor.prototype.visitAddExpression = function (c) { return ExpressionEvaluatorImpl.visitAddExpression(c, this); };
-CashVisitor.prototype.visitLabelExpression = function (c) { return ExpressionEvaluatorImpl.visitLabelExpression(c, this); };
-CashVisitor.prototype.visitParExpression = function (c) { return ExpressionEvaluatorImpl.visitParExpression(c, this); };
-CashVisitor.prototype.visitAtomExpression = function (c) { return ExpressionEvaluatorImpl.visitAtomExpression(c, this); };
-CashVisitor.prototype.visitCompExpression = function (c) { return ExpressionEvaluatorImpl.visitCompExpression(c, this); };
-CashVisitor.prototype.visitLogicExpression = function (c) { return ExpressionEvaluatorImpl.visitLogicExpression(c, this); };
+CashVisitor.prototype.visitMultiExpression = function (c) {
+  return ExpressionEvaluatorImpl.visitMultiExpression(c, this);
+};
+CashVisitor.prototype.visitAddExpression = function (c) {
+  return ExpressionEvaluatorImpl.visitAddExpression(c, this);
+};
+CashVisitor.prototype.visitLabelExpression = function (c) {
+  return ExpressionEvaluatorImpl.visitLabelExpression(c, this);
+};
+CashVisitor.prototype.visitParExpression = function (c) {
+  return ExpressionEvaluatorImpl.visitParExpression(c, this);
+};
+CashVisitor.prototype.visitAtomExpression = function (c) {
+  return ExpressionEvaluatorImpl.visitAtomExpression(c, this);
+};
+CashVisitor.prototype.visitCompExpression = function (c) {
+  return ExpressionEvaluatorImpl.visitCompExpression(c, this);
+};
+CashVisitor.prototype.visitLogicExpression = function (c) {
+  return ExpressionEvaluatorImpl.visitLogicExpression(c, this);
+};
+CashVisitor.prototype.visitFuncExpression = function (c) {
+  return ExpressionEvaluatorImpl.visitFuncExpression(c, this);
+};
 
 /** Functions implementations */
-CashVisitor.prototype.visitFunc_declaration = function (c) { return FunctionsImpl.visitFuncDeclaration(c, this); };
-CashVisitor.prototype.visitFunc_call = function (c) { return FunctionsImpl.visitFuncCall(c, this); };
+CashVisitor.prototype.visitFunc_declaration = function (c) {
+  return FunctionsImpl.visitFuncDeclaration(c, this);
+};
+CashVisitor.prototype.visitFunc_call = function (c) {
+  return FunctionsImpl.visitFuncCall(c, this);
+};
 
 /** Control structures */
-CashVisitor.prototype.visitIf_statement = function(c) { return ControlStructuresImpl.visitIfStatement(c, this) }
-CashVisitor.prototype.visitWhile_statement = function(c) { return ControlStructuresImpl.visitWhileStatement(c, this) }
+CashVisitor.prototype.visitIf_statement = function (c) {
+  return ControlStructuresImpl.visitIfStatement(c, this)
+}
+CashVisitor.prototype.visitWhile_statement = function (c) {
+  return ControlStructuresImpl.visitWhileStatement(c, this)
+}
 
 visitor = new CashVisitor();
 try {
