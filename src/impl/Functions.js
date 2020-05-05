@@ -66,7 +66,7 @@ class FunctionsImpl {
     return ret;
   }
 
-  argumentsMiscount(expected, provided, ctx) {
+  argumentsMiscount(provided, expected, ctx) {
     RuntimeError.throw("Function arguments miscount. Provided "
       + provided
       + " arguments while function expects "

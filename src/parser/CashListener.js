@@ -146,12 +146,12 @@ CashListener.prototype.exitMultiExpression = function(ctx) {
 };
 
 
-// Enter a parse tree produced by CashParser#binExpression.
-CashListener.prototype.enterBinExpression = function(ctx) {
+// Enter a parse tree produced by CashParser#logicExpression.
+CashListener.prototype.enterLogicExpression = function(ctx) {
 };
 
-// Exit a parse tree produced by CashParser#binExpression.
-CashListener.prototype.exitBinExpression = function(ctx) {
+// Exit a parse tree produced by CashParser#logicExpression.
+CashListener.prototype.exitLogicExpression = function(ctx) {
 };
 
 
@@ -215,6 +215,24 @@ CashListener.prototype.enterOp_add = function(ctx) {
 
 // Exit a parse tree produced by CashParser#op_add.
 CashListener.prototype.exitOp_add = function(ctx) {
+};
+
+
+// Enter a parse tree produced by CashParser#op_comp.
+CashListener.prototype.enterOp_comp = function(ctx) {
+};
+
+// Exit a parse tree produced by CashParser#op_comp.
+CashListener.prototype.exitOp_comp = function(ctx) {
+};
+
+
+// Enter a parse tree produced by CashParser#op_logic.
+CashListener.prototype.enterOp_logic = function(ctx) {
+};
+
+// Exit a parse tree produced by CashParser#op_logic.
+CashListener.prototype.exitOp_logic = function(ctx) {
 };
 
 

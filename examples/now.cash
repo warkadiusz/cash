@@ -9,7 +9,7 @@ func test(x) {
 }
 
 test(a)
-/$
+
 const PI = 3.14159
 const NEG_PI = -3.1415
 
@@ -18,20 +18,20 @@ $PI = "try to overwrite"
 $ some comment here
 $ some more comments
 
-$ let teraz_patrz = "o matko"
-
-func a {
+func a() {
     let u = 12
     const bc = -35.7
 }
 a = "trochę zmiana planów"
-asd = 3 + 0.14 - a() * 5 * 45 $comment that out
+let asd = 3 + 0.14 - a() * 5 * 45 $comment that out
 let uszy = a() * -3.14
 
-print("some debug", a, NEG_PI)
+print("some debug")
+print(a);
+print(PI)
 
 if (a >= b)
-    test3 = "b"
+    const test3 = "b"
 else if a > b
     let u = 3434
 else {
@@ -40,9 +40,5 @@ else {
     oooo = "bfbfb"
 }
 
-while a == b
-    if (oups < 2)
-        const beng = 2
 
-if true print(beng)
-$/
+if true print("beng")

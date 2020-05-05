@@ -17,7 +17,7 @@ class Core {
   }
 
   visitAtom(ctx) {
-    return parseFloat(ctx.getText())
+    return ctx.getText()
   }
 }
 

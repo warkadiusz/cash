@@ -13,7 +13,6 @@ class VariablesAndConsts {
       RuntimeError.throw("Cannot redeclare variable " + newVarName, ctx);
     }
     let value = globalCtx.visit(ctx.value);
-    value = Array.isArray(value) ? value[0] : value;
 
     this.stack.peek()["memory"][newVarName] = new Variable(newVarName, value, false);
   }

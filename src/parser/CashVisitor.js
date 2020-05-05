@@ -102,8 +102,8 @@ CashVisitor.prototype.visitMultiExpression = function(ctx) {
 };
 
 
-// Visit a parse tree produced by CashParser#binExpression.
-CashVisitor.prototype.visitBinExpression = function(ctx) {
+// Visit a parse tree produced by CashParser#logicExpression.
+CashVisitor.prototype.visitLogicExpression = function(ctx) {
   return this.visitChildren(ctx);
 };
 
@@ -146,6 +146,18 @@ CashVisitor.prototype.visitOp_multi = function(ctx) {
 
 // Visit a parse tree produced by CashParser#op_add.
 CashVisitor.prototype.visitOp_add = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by CashParser#op_comp.
+CashVisitor.prototype.visitOp_comp = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by CashParser#op_logic.
+CashVisitor.prototype.visitOp_logic = function(ctx) {
   return this.visitChildren(ctx);
 };
 

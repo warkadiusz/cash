@@ -24,15 +24,15 @@ func_call : name=func_name L_PAR args_l=args_list R_PAR;
 args_list : (args+=expr ',')* (args+=expr)?;
 args_decl_list : (args+=label ',')* (args+=label)?;
 
-expr : left=expr op=op_pow right=expr                       #powExpression
-     | left=expr op=op_multi right=expr                     #multiExpression
-     | left=expr op=op_add right=expr                       #addExpression
-     | L_PAR exprx=expr R_PAR                               #parExpression
-     | func_call                                            #funcExpression
-     | label                                                #labelExpression
-     | expr op=(OP_AND | OP_OR) expr                        #binExpression
-     | expr op=(OP_EQ | OP_GT | OP_GE | OP_LE | OP_LT) expr #compExpression
-     | atom                                                 #atomExpression
+expr : left=expr op=op_pow right=expr                                   #powExpression
+     | left=expr op=op_multi right=expr                                 #multiExpression
+     | left=expr op=op_add right=expr                                   #addExpression
+     | L_PAR exprx=expr R_PAR                                           #parExpression
+     | func_call                                                        #funcExpression
+     | label                                                            #labelExpression
+     | left=expr op=op_logic right=expr                                 #logicExpression
+     | left=expr op=op_comp right=expr                                  #compExpression
+     | atom                                                             #atomExpression
      ;
 
 atom : STR_LIT
@@ -40,16 +40,19 @@ atom : STR_LIT
      | (KW_TRUE | KW_FALSE)
      ;
 
-op_pow: (OP_POW);
-op_multi: (OP_MULTIPLY | OP_DIVIDE);
-op_add:   (OP_PLUS | OP_SUB);
+op_pow:     (OP_POW);
+op_multi:   (OP_MULTIPLY | OP_DIVIDE);
+op_add:     (OP_PLUS | OP_SUB);
+op_comp:    (OP_EQ | OP_NEQ | OP_GT | OP_GE | OP_LE | OP_LT);
+op_logic:   (OP_AND | OP_OR);
+
 func_name: LABEL;
 
 statement_block : L_BRACE statement+ R_BRACE
                 | statement ;
 
-if_statement : KW_IF expr statement_block (KW_ELSE KW_IF expr statement_block)* (KW_ELSE statement_block)? ;
-while_statement : KW_WHILE expr statement_block ;
+if_statement : KW_IF condition=expr body=statement_block (KW_ELSE KW_IF elseif_cond+=expr elseif_body+=statement_block)* (KW_ELSE else_body=statement_block)? ;
+while_statement : KW_WHILE condition=expr statement_block ;
 
 fragment DIGIT : [0-9]+ ;
 label : LABEL;
@@ -74,6 +77,7 @@ OP_DECREMENT: '--' ;
 OP_AND: '&&';
 OP_OR: '||';
 OP_EQ: '==';
+OP_NEQ: '!=';
 OP_GT: '>';
 OP_GE: '>=';
 OP_LT: '<';
@@ -86,7 +90,7 @@ R_PAR: ')';
 
 LABEL : [a-zA-Z] ([a-zA-Z_] | DIGIT)* ;
 
-STR_LIT : '"'.*?'"' ;
+STR_LIT : '"' .*? '"' { this.text=this.text.slice(1, this.text.length-1); };
 NUM_LIT : DIGIT+
                 | DIGIT+ '.' DIGIT+
                 | '-' DIGIT+
@@ -96,4 +100,5 @@ NUM_LIT : DIGIT+
 COMMENT  :  '$' ~( '\r' | '\n' )* -> skip;
 BLOCK_COMMENT : '/$' .*? '$/' -> skip;
 WS : [ \t]+ -> skip;
+SEMICOLON_EOL : ';\n' -> skip;
 EOL : '\r'? '\n' -> skip;

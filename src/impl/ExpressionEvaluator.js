@@ -45,8 +45,44 @@ class ExpressionEvaluator {
     return this.stack.peek()["memory"][varConstName].value
   }
 
-  visitParExpression(ctx, globalCtx) {
-    return globalCtx.visit(ctx.exprx);
+  visitCompExpression(ctx, visitor) {
+    const leftValue = visitor.visit(ctx.left);
+    const rightValue = visitor.visit(ctx.right);
+
+    switch (ctx.op.getText()) {
+      case Operators.Equal:
+        return leftValue == rightValue;
+      case Operators.NotEqual:
+        return leftValue != rightValue;
+      case Operators.GreaterEqual:
+        return leftValue >= rightValue;
+      case Operators.GreaterThan:
+        return leftValue > rightValue;
+      case Operators.LessEqual:
+        return leftValue <= rightValue;
+      case Operators.LessThan:
+        return leftValue < rightValue;
+    }
+
+    RuntimeError.throw("Unsupported operator '" + op + "'", ctx);
+  }
+
+  visitLogicExpression(ctx, visitor) {
+    const leftValue = visitor.visit(ctx.left);
+    const rightValue = visitor.visit(ctx.right);
+
+    switch (ctx.op.getText()) {
+      case Operators.And:
+        return leftValue && rightValue;
+      case Operators.Or:
+        return leftValue || rightValue;
+    }
+
+    RuntimeError.throw("Unsupported operator '" + op + "'", ctx);
+  }
+
+  visitParExpression(ctx, visitor) {
+    return visitor.visit(ctx.exprx);
   }
 
   visitAtomExpression(ctx, visitor) {
