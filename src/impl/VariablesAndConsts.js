@@ -25,7 +25,7 @@ class VariablesAndConsts {
       RuntimeError.throw("Cannot redeclare variable/constant \"" + newConstName +"\"", ctx);
     }
 
-    this.stack.peek()["memory"][newConstName] = new Variable(newConstName, globalCtx.visit(ctx.value)[0], true);
+    this.stack.peek()["memory"][newConstName] = new Variable(newConstName, globalCtx.visit(ctx.value), true);
   }
 
   visitAssignToLabel(ctx, globalCtx) {
@@ -39,7 +39,7 @@ class VariablesAndConsts {
       RuntimeError.throw("Cannot re-assign the constant " + name, ctx);
     }
 
-    this.stack.peek()["memory"][name].value = globalCtx.visit(ctx.value)[0];
+    this.stack.peek()["memory"][name].value = globalCtx.visit(ctx.value);
   }
 }
 
