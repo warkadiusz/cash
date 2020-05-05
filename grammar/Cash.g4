@@ -18,8 +18,11 @@ assign_to_label : llabel=label OP_ASSIGN value=expr;
 
 comment : COMMENT | BLOCK_COMMENT;
 
-func_declaration : KW_FUNC LABEL L_BRACE program R_BRACE;
-func_call : name=func_name L_PAR (args+=expr ',')* (args+=expr) R_PAR;
+func_declaration : KW_FUNC name=label L_PAR args_l=args_decl_list R_PAR L_BRACE body=program R_BRACE;
+func_call : name=func_name L_PAR args_l=args_list R_PAR;
+
+args_list : (args+=expr ',')* (args+=expr)?;
+args_decl_list : (args+=label ',')* (args+=label)?;
 
 expr : left=expr op=op_pow right=expr                       #powExpression
      | left=expr op=op_multi right=expr                     #multiExpression
