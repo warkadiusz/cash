@@ -62,6 +62,7 @@ CashVisitor.prototype.visitMultiExpression = function (c) { return ExpressionEva
 CashVisitor.prototype.visitAddExpression = function (c) { return ExpressionEvaluatorImpl.visitAddExpression(c, this); };
 CashVisitor.prototype.visitLabelExpression = function (c) { return ExpressionEvaluatorImpl.visitLabelExpression(c, this); };
 CashVisitor.prototype.visitParExpression = function (c) { return ExpressionEvaluatorImpl.visitParExpression(c, this); };
+CashVisitor.prototype.visitAtomExpression = function (c) { return ExpressionEvaluatorImpl.visitAtomExpression(c, this); };
 
 /** Functions implementations */
 CashVisitor.prototype.visitFunc_declaration = function (c) { return FunctionsImpl.visitFuncDeclaration(c, this); };

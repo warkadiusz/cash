@@ -48,6 +48,10 @@ class ExpressionEvaluator {
   visitParExpression(ctx, globalCtx) {
     return globalCtx.visit(ctx.exprx);
   }
+
+  visitAtomExpression(ctx, visitor) {
+    return visitor.visit(ctx.children[0])
+  }
 }
 
 module.exports = ExpressionEvaluator;
