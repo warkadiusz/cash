@@ -42,5 +42,9 @@ else {
 
 $/
 
-writeFile("/tmp/a", "LOL")
-print(readFile("/tmp/a"));
+func MyAdd(a, b) {
+    ret a+b
+}
+
+let a = MyAdd(1, 2);
+print(a)

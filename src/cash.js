@@ -102,6 +102,12 @@ CashVisitor.prototype.visitFunc_declaration = function (c) {
 CashVisitor.prototype.visitFunc_call = function (c) {
   return FunctionsImpl.visitFuncCall(c, this);
 };
+CashVisitor.prototype.visitFunc_statement_block = function(c) {
+  return FunctionsImpl.visitFuncStatementBlock(c, this);
+}
+CashVisitor.prototype.visitReturn_statement = function(c) {
+  return FunctionsImpl.visitReturnStatement(c, this);
+}
 
 /** Control structures */
 CashVisitor.prototype.visitIf_statement = function (c) {

@@ -83,6 +83,15 @@ CashListener.prototype.exitFunc_call = function(ctx) {
 };
 
 
+// Enter a parse tree produced by CashParser#return_statement.
+CashListener.prototype.enterReturn_statement = function(ctx) {
+};
+
+// Exit a parse tree produced by CashParser#return_statement.
+CashListener.prototype.exitReturn_statement = function(ctx) {
+};
+
+
 // Enter a parse tree produced by CashParser#args_list.
 CashListener.prototype.enterArgs_list = function(ctx) {
 };
@@ -251,6 +260,15 @@ CashListener.prototype.enterStatement_block = function(ctx) {
 
 // Exit a parse tree produced by CashParser#statement_block.
 CashListener.prototype.exitStatement_block = function(ctx) {
+};
+
+
+// Enter a parse tree produced by CashParser#func_statement_block.
+CashListener.prototype.enterFunc_statement_block = function(ctx) {
+};
+
+// Exit a parse tree produced by CashParser#func_statement_block.
+CashListener.prototype.exitFunc_statement_block = function(ctx) {
 };
 
 

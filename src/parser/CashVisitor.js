@@ -60,6 +60,12 @@ CashVisitor.prototype.visitFunc_call = function(ctx) {
 };
 
 
+// Visit a parse tree produced by CashParser#return_statement.
+CashVisitor.prototype.visitReturn_statement = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
 // Visit a parse tree produced by CashParser#args_list.
 CashVisitor.prototype.visitArgs_list = function(ctx) {
   return this.visitChildren(ctx);
@@ -170,6 +176,12 @@ CashVisitor.prototype.visitFunc_name = function(ctx) {
 
 // Visit a parse tree produced by CashParser#statement_block.
 CashVisitor.prototype.visitStatement_block = function(ctx) {
+  return this.visitChildren(ctx);
+};
+
+
+// Visit a parse tree produced by CashParser#func_statement_block.
+CashVisitor.prototype.visitFunc_statement_block = function(ctx) {
   return this.visitChildren(ctx);
 };
 

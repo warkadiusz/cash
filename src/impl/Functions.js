@@ -1,6 +1,7 @@
 const RuntimeError = require('../misc/RuntimeError');
 const StackFrame = require('../misc/StackFrame');
-const Function = require('../misc/Function');
+const Function = require('../misc/DeclaredFunction');
+const Variable = require('../misc/Variable');
 
 class FunctionsImpl {
   constructor(stack, functions) {
@@ -30,6 +31,7 @@ class FunctionsImpl {
     if (typeof this.functions[funcName] === "undefined") {
       RuntimeError.throw("Calling undeclared function " + funcName, callContext);
     }
+
     const funcParameters = this.functions[funcName].argsList;
     const actualParameters = callContext.args_l.args;
 
@@ -48,22 +50,28 @@ class FunctionsImpl {
         RuntimeError.throw("Cannot establish parameter \"" + funcParameters[arg] + "\" value at function \"" + funcName + "\" call.", callContext);
       }
 
-      stackFrame.memory[funcParameters[arg]] = actualParameter;
+      stackFrame.memory[funcParameters[arg]] = new Variable(funcParameters[arg], actualParameter, true);
     }
 
     this.stack.push(stackFrame);
-
-    /** Declared function */
-    if (this.functions[funcName].bodyContext.constructor.name === "Statement_blockContext") {
-      let ret = visitor.visit(this.functions[funcName].bodyContext);
-      this.stack.pop();
-      return ret;
-    }
-
-    /** Built-in function */
-    this.functions[funcName].bodyContext(callContext, visitor);
+    this.functions[funcName].call(callContext, visitor);
     const frame = this.stack.pop();
     return frame.returnValue;
+  }
+
+  visitFuncStatementBlock(ctx, visitor) {
+    for (const k in ctx.children) {
+      if (ctx.children[k].constructor.name === "Return_statementContext") {
+        this.stack.peek().returnValue = visitor.visit(ctx.children[k])
+        return;
+      }
+
+      visitor.visit(ctx.children[k]);
+    }
+  }
+
+  visitReturnStatement(ctx, visitor) {
+    return visitor.visit(ctx.val);
   }
 
   argumentsMiscount(provided, expected, ctx) {

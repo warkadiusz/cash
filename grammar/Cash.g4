@@ -18,8 +18,9 @@ assign_to_label : llabel=label OP_ASSIGN value=expr;
 
 comment : COMMENT | BLOCK_COMMENT;
 
-func_declaration : KW_FUNC name=label L_PAR args_l=args_decl_list R_PAR body=statement_block;
+func_declaration : KW_FUNC name=label L_PAR args_l=args_decl_list R_PAR body=func_statement_block;
 func_call : name=func_name L_PAR args_l=args_list R_PAR;
+return_statement : KW_RETURN val=expr;
 
 args_list : (args+=expr ',')* (args+=expr)?;
 args_decl_list : (args+=label ',')* (args+=label)?;
@@ -51,6 +52,10 @@ func_name: LABEL;
 statement_block : L_BRACE statement+ R_BRACE
                 | statement ;
 
+func_statement_block : L_BRACE (statement|return_statement)+ R_BRACE
+                     | statement
+                     | return_statement;
+
 if_statement : KW_IF condition=expr body=statement_block (KW_ELSE KW_IF elseif_cond+=expr elseif_body+=statement_block)* (KW_ELSE else_body=statement_block)? ;
 while_statement : KW_WHILE condition=expr body=statement_block ;
 
@@ -65,6 +70,7 @@ KW_FUNC : 'func';
 KW_ELSE : 'else';
 KW_TRUE: 'true';
 KW_FALSE: 'false';
+KW_RETURN : 'ret';
 
 OP_ASSIGN: '=' ;
 OP_PLUS: '+' ;

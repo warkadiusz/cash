@@ -1,11 +1,11 @@
-const Function = require('../misc/Function');
+const Function = require('../misc/BuiltInFunction');
 const RuntimeError = require("../misc/RuntimeError");
 const fs = require("fs");
 
 const StdLib = {
   stack: null,
   getValue(name) {
-    return this.stack.peek().memory[name]
+    return this.stack.peek().memory[name].value
   },
   setReturnValue(val) {
     this.stack.peek().returnValue = val;
