@@ -5,6 +5,7 @@ const CashVisitor = require('./parser/CashVisitor').CashVisitor
 const fs = require('fs')
 const StackClass = require('./misc/Stack')
 const RuntimeError = require('./misc/RuntimeError')
+const Function = require('./misc/Function')
 
 const inputArgs = process.argv.slice(2);
 let code;
@@ -33,14 +34,9 @@ const stack = new StackClass;
 let functionsDefinitions = {};
 RuntimeError.stack = stack;
 
-functionsDefinitions["print"] = function (argsList, context) {
-  argsList.forEach(arg => {
-    console.log(context.visit(arg));
-  })
-}
-
-global.throwRuntimeError = function(err, ctx) {
-}
+functionsDefinitions["print"] = new Function("print", ["msg"], function(visitor, stack) {
+  console.log(stack.peek().memory["msg"]);
+});
 
 const CoreClass = require('./impl/Core');
 const FunctionsClass = require('./impl/Functions');

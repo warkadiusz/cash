@@ -3,13 +3,12 @@ let a = 5
 let b = 12
 let c = a + b
 
-func test() {
+func test(x) {
     let a = 16
-    print(a)
+    print(x)
 }
 
-test()
-print(a)
+test(a)
 /$
 const PI = 3.14159
 const NEG_PI = -3.1415
