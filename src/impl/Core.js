@@ -17,7 +17,16 @@ class Core {
   }
 
   visitAtom(ctx) {
-    return ctx.getText()
+    const text = ctx.getText();
+    if(text === "true") {
+      return true;
+    } else if(text === "false") {
+      return false;
+    } else if(!isNaN(text)) {
+      return parseFloat(text);
+    }
+
+    return text;
   }
 }
 

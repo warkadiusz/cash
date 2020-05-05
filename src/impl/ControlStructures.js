@@ -11,15 +11,24 @@ class ControlStructures {
     bodies.push(ctx.body);
     bodies.push(...ctx.elseif_body);
 
-    for(const k in conditions) {
+    for (const k in conditions) {
       let evaluateTo = visitor.visit(conditions[k]);
-      if(evaluateTo) {
+      if (evaluateTo) {
         return visitor.visit(bodies[k]);
       }
     }
 
-    if(ctx.else_body) {
+    if (ctx.else_body) {
       visitor.visit(ctx.else_body)
+    }
+  }
+
+  visitWhileStatement(ctx, visitor) {
+    const body = ctx.body;
+    const condition = ctx.condition;
+
+    while (visitor.visit(condition)) {
+      visitor.visit(body);
     }
   }
 }

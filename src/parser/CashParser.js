@@ -88,9 +88,9 @@ var serializedATN = ["\u0003\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964",
     "\u0081\u0005\u0016\f\u000b\u0081\u008f\u0003\u0002\u0002\u0002\u0082",
     "\u0083\f\t\u0002\u0002\u0083\u0084\u0005\u001e\u0010\u0002\u0084\u0085",
     "\u0005\u0016\f\n\u0085\u008f\u0003\u0002\u0002\u0002\u0086\u0087\f\u0005",
-    "\u0002\u0002\u0087\u0088\u0005\"\u0012\u0002\u0088\u0089\u0005\u0016",
+    "\u0002\u0002\u0087\u0088\u0005 \u0011\u0002\u0088\u0089\u0005\u0016",
     "\f\u0006\u0089\u008f\u0003\u0002\u0002\u0002\u008a\u008b\f\u0004\u0002",
-    "\u0002\u008b\u008c\u0005 \u0011\u0002\u008c\u008d\u0005\u0016\f\u0005",
+    "\u0002\u008b\u008c\u0005\"\u0012\u0002\u008c\u008d\u0005\u0016\f\u0005",
     "\u008d\u008f\u0003\u0002\u0002\u0002\u008ez\u0003\u0002\u0002\u0002",
     "\u008e~\u0003\u0002\u0002\u0002\u008e\u0082\u0003\u0002\u0002\u0002",
     "\u008e\u0086\u0003\u0002\u0002\u0002\u008e\u008a\u0003\u0002\u0002\u0002",
@@ -1727,7 +1727,7 @@ CashParser.prototype.expr = function(_p) {
                     break;
 
                 case 4:
-                    localctx = new LogicExpressionContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx = new CompExpressionContext(this, new ExprContext(this, _parentctx, _parentState));
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, CashParser.RULE_expr);
                     this.state = 132;
@@ -1735,13 +1735,13 @@ CashParser.prototype.expr = function(_p) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 3)");
                     }
                     this.state = 133;
-                    localctx.op = this.op_logic();
+                    localctx.op = this.op_comp();
                     this.state = 134;
                     localctx.right = this.expr(4);
                     break;
 
                 case 5:
-                    localctx = new CompExpressionContext(this, new ExprContext(this, _parentctx, _parentState));
+                    localctx = new LogicExpressionContext(this, new ExprContext(this, _parentctx, _parentState));
                     localctx.left = _prevctx;
                     this.pushNewRecursionContext(localctx, _startState, CashParser.RULE_expr);
                     this.state = 136;
@@ -1749,7 +1749,7 @@ CashParser.prototype.expr = function(_p) {
                         throw new antlr4.error.FailedPredicateException(this, "this.precpred(this._ctx, 2)");
                     }
                     this.state = 137;
-                    localctx.op = this.op_comp();
+                    localctx.op = this.op_logic();
                     this.state = 138;
                     localctx.right = this.expr(3);
                     break;
@@ -2666,6 +2666,7 @@ function While_statementContext(parser, parent, invokingState) {
     this.parser = parser;
     this.ruleIndex = CashParser.RULE_while_statement;
     this.condition = null; // ExprContext
+    this.body = null; // Statement_blockContext
     return this;
 }
 
@@ -2676,12 +2677,12 @@ While_statementContext.prototype.KW_WHILE = function() {
     return this.getToken(CashParser.KW_WHILE, 0);
 };
 
-While_statementContext.prototype.statement_block = function() {
-    return this.getTypedRuleContext(Statement_blockContext,0);
-};
-
 While_statementContext.prototype.expr = function() {
     return this.getTypedRuleContext(ExprContext,0);
+};
+
+While_statementContext.prototype.statement_block = function() {
+    return this.getTypedRuleContext(Statement_blockContext,0);
 };
 
 While_statementContext.prototype.enterRule = function(listener) {
@@ -2720,7 +2721,7 @@ CashParser.prototype.while_statement = function() {
         this.state = 194;
         localctx.condition = this.expr(0);
         this.state = 195;
-        this.statement_block();
+        localctx.body = this.statement_block();
     } catch (re) {
     	if(re instanceof antlr4.error.RecognitionException) {
 	        localctx.exception = re;

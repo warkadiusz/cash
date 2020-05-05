@@ -30,8 +30,8 @@ expr : left=expr op=op_pow right=expr                                   #powExpr
      | L_PAR exprx=expr R_PAR                                           #parExpression
      | func_call                                                        #funcExpression
      | label                                                            #labelExpression
-     | left=expr op=op_logic right=expr                                 #logicExpression
      | left=expr op=op_comp right=expr                                  #compExpression
+     | left=expr op=op_logic right=expr                                 #logicExpression
      | atom                                                             #atomExpression
      ;
 
@@ -52,7 +52,7 @@ statement_block : L_BRACE statement+ R_BRACE
                 | statement ;
 
 if_statement : KW_IF condition=expr body=statement_block (KW_ELSE KW_IF elseif_cond+=expr elseif_body+=statement_block)* (KW_ELSE else_body=statement_block)? ;
-while_statement : KW_WHILE condition=expr statement_block ;
+while_statement : KW_WHILE condition=expr body=statement_block ;
 
 fragment DIGIT : [0-9]+ ;
 label : LABEL;

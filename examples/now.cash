@@ -1,5 +1,5 @@
 $print(20 * 4 + 5 / 5)
-let a = 5
+/$let a = 5
 let b = 12
 let c = a + b
 
@@ -40,5 +40,15 @@ else {
     oooo = "bfbfb"
 }
 
+$/
 
-if true print("beng")
+let i = 1
+let run = true
+while i<=10 && run {
+    print(i)
+    i = i+1;
+    if i==7 {
+        print("STOP");
+        run = false;
+    }
+}

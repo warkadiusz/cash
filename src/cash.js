@@ -73,7 +73,9 @@ CashVisitor.prototype.visitLogicExpression = function (c) { return ExpressionEva
 CashVisitor.prototype.visitFunc_declaration = function (c) { return FunctionsImpl.visitFuncDeclaration(c, this); };
 CashVisitor.prototype.visitFunc_call = function (c) { return FunctionsImpl.visitFuncCall(c, this); };
 
+/** Control structures */
 CashVisitor.prototype.visitIf_statement = function(c) { return ControlStructuresImpl.visitIfStatement(c, this) }
+CashVisitor.prototype.visitWhile_statement = function(c) { return ControlStructuresImpl.visitWhileStatement(c, this) }
 
 visitor = new CashVisitor();
 try {
