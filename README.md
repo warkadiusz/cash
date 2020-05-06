@@ -12,12 +12,13 @@ Jezyki formalne i kompilatory - projekt
 
 
 ## Language description
-**Cash** is tiny dynamic-typed script language implemented with Javascript(NodeJS) for university 
-*Formal languages and compilators* course. In terms of syntax and features it is a mix
-between Javascript, Golang and bash.
+**Cash** is tiny dynamic-typed script language implemented with Javascript(NodeJS) 
+ and ANTLR 4 parser generator, built for university *Formal languages and 
+ compilators* course. In terms of syntax and features it is a mix 
+ between Javascript, Golang and bash.
 
 ## Features
-1. Scope-limited variables and constants (scopes defined by functions)
+1. Scope-limited variables and constants (scopes defined by functions). 
 2. Functions definitions, calls and returns
     1. interfaces for defining user-space functions and "built-in" functions(see [Standard library](#standard-library))
 3. [Standard library](#standard-library)
@@ -319,3 +320,16 @@ triggerEvent("aaa", "");
 ## Makefile
 * `gui` - compiles ANTLR and runs grun on file `now.cash`
 * `node` - compiles ANTLR with JS target and runs `index.js` with `now.cash` file to interpret
+
+## Why ANTLR 4?
+1. Stable solution, large users community, excellent documentation
+2. JavaScript parser target
+
+## Issues during implementation
+1. Visitor pattern vs. listener pattern - exact differences and what to choose
+2. Initial understanding of visitor pattern execution (visit parser rules vs. visit terminals)
+3. JavaScript quirks (eg. `this` depends on call context)
+
+## Linkography
+1. Spivak R.: Let’s Build A Simple Interpreter, [online] https://ruslanspivak.com/lsbasi-part1/
+2. ANTLR 4 Documentation: [online] https://github.com/antlr/antlr4/blob/4.6/doc/index.md
