@@ -63,7 +63,7 @@ print(3.14)
 print(var_name)
 ```
 #### exit(code)
-Immediately stops execution with provided code.  
+Immediately stops execution and exits with provided code.  
 Examples:
 ```
 exit(0)   $ success
