@@ -53,11 +53,11 @@ StdLib.functions["writeFile"] = new Function("writeFile", ["path", "contents"], 
   }
 });
 
-StdLib.functions["array"] = new Function("array", [], function() {
+StdLib.functions["array"] = new Function("array", [], function () {
   StdLib.setReturnValue([])
 });
 
-StdLib.functions["arraySet"] = new Function("arraySet", ["arr", "key", "val"], function() {
+StdLib.functions["arraySet"] = new Function("arraySet", ["arr", "key", "val"], function () {
   const arr = StdLib.getValue("arr");
   const key = StdLib.getValue("key");
 
@@ -66,10 +66,17 @@ StdLib.functions["arraySet"] = new Function("arraySet", ["arr", "key", "val"], f
   StdLib.setReturnValue(arr);
 });
 
-StdLib.functions["arrayGet"] = new Function("arrayGet", ["arr", "key"], function(){
+StdLib.functions["arrayGet"] = new Function("arrayGet", ["arr", "key"], function () {
   const arr = StdLib.getValue("arr");
   const key = StdLib.getValue("key");
-  StdLib.setReturnValue(arr[key])
+  StdLib.setReturnValue(arr[key]);
 });
+
+StdLib.functions["concat"] = new Function("concat", ["a", "b"], function () {
+  const a = StdLib.getValue("a");
+  const b = StdLib.getValue("b");
+
+  StdLib.setReturnValue(a + "" + b)
+})
 
 module.exports = StdLib;
