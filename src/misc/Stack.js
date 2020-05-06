@@ -19,6 +19,10 @@ class Stack {
     return this.frames.length;
   }
 
+  getRoot() {
+    return this.frames[0];
+  }
+
   print() {
     let msg = "";
     for(const k in this.frames) {

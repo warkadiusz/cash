@@ -11,6 +11,12 @@ const StdLib = {
   setReturnValue(val) {
     this.stack.peek().returnValue = val;
   },
+  getGlobalValue(name) {
+    return this.stack.getRoot().memory[name].value;
+  },
+  setGlobalValue(name, value) {
+    this.stack.getRoot().memory[name].value = value;
+  },
   functions: {}
 };
 
@@ -78,6 +84,11 @@ StdLib.functions["arrayPush"] = new Function("arrayPush", ["arr", "val"], functi
   const val = StdLib.getValue("val");
   arr.push(val)
   StdLib.setReturnValue(arr);
+});
+
+StdLib.functions["arraySize"] = new Function("arraySize", ["arr"], function () {
+  const arr = StdLib.getValue("arr");
+  StdLib.setReturnValue(arr.length);
 })
 
 StdLib.functions["concat"] = new Function("concat", ["a", "b"], function () {
@@ -89,6 +100,29 @@ StdLib.functions["concat"] = new Function("concat", ["a", "b"], function () {
 
 StdLib.functions["readLine"] = new Function("readLine", [], function () {
   StdLib.setReturnValue(readlineSync.question())
+});
+
+StdLib.functions["call"] = new Function("call", ["funcName", "data"], function (callContext, visitor) {
+  const funcName = StdLib.getValue("funcName");
+  const data = StdLib.getValue("data");
+
+  if(!StdLib.functions[funcName]) {
+    RuntimeError.throw("Calling undeclared function " + funcName, callContext);
+  }
+  StdLib.functions[funcName].argsList = {data : data};
+  StdLib.functions[funcName].call(callContext, visitor)
+});
+
+StdLib.functions["getGlobalVar"] = new Function("getGlobalVar", ["varName"], function() {
+  const varName = StdLib.getValue("varName");
+  StdLib.setReturnValue(StdLib.getGlobalValue(varName));
+});
+
+StdLib.functions["setGlobalVar"] = new Function("setGlobalVar", ["varName", "value"], function () {
+  const varName = StdLib.getValue("varName");
+  const value = StdLib.getValue("value");
+
+  StdLib.setGlobalValue(varName, value)
 });
 
 module.exports = StdLib;

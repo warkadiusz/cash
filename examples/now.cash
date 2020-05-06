@@ -41,3 +41,43 @@ else {
 }
 
 $/
+
+
+/$
+$ Events-based execution framework in user-space
+let eventsHandlers = array()
+
+func createEvent(eventName) {
+    let eventsHandlers = getGlobalVar("eventsHandlers");
+    eventsHandlers = arraySet(eventsHandlers, eventName, array());
+    setGlobalVar("eventsHandlers", eventsHandlers);
+}
+
+func onEvent(eventName, funcName) {
+    let eventsHandlers = getGlobalVar("eventsHandlers")
+    let handlers = arrayGet(eventsHandlers, eventName)
+    handlers = arrayPush(handlers, funcName)
+    eventsHandlers = arraySet(eventsHandlers, eventName, handlers)
+    setGlobalVar("eventsHandlers", eventsHandlers)
+}
+
+func triggerEvent(eventName, data) {
+    let eventsHandlers = getGlobalVar("eventsHandlers")
+    let handlers = arrayGet(eventsHandlers, eventName)
+
+    let i = 0
+    let handlersCount = arraySize(handlers)
+    while i < handlersCount {
+        call(arrayGet(handlers, i), data)
+        i = i + 1;
+    }
+}
+
+func printMy(msg) {
+    print("ooh I was called")
+}
+
+createEvent("aaa")
+onEvent("aaa", "printMy")
+triggerEvent("aaa", "");
+$/
