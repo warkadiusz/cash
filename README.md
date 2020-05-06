@@ -33,7 +33,7 @@ between Javascript, Golang and bash.
 7. `if [(else if)*][else]` and `while` control structures
 8. Arithmetic expression evaluation with addition, subtraction, multiplication, division and
    powers.
-9. Logical expression evaluation with logical alternative (`||`) and conjuction (`&&`) operators.
+9. Logical expression evaluation with logical alternative (`||`) and conjunction (`&&`) operators.
 10. Comparision operators: `==`,`!=`, `<`, `<=`, `>`, `>=`
 11. Stack size inherited from nodejs (492kb on 32-bit and 984kb on 64-bit).
     As interpreter itself consumes some of it, not all stack size is available for executed
