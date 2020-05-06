@@ -218,6 +218,41 @@ Prints "Hello world!" to stdout
 print("Hello world!")
 ```
 
+#### vars_constants_and_functions.cash
+Example on how to declare and assign variables and constants
+```
+$ This is line comment
+let a = 3; $ It can be put anywhere
+
+/$
+ This is block comment, also can be put anywhere
+$/
+
+$ Declare constant with keyword `const`
+const PI = 3.14
+print(PI)       $ Prints: 3.14
+
+$ Declare variable with keyword `let`
+let tau = PI * 2
+print(tau)      $ Prints: 6.28
+
+$ Assign value to defined variable
+tau = 0
+print(tau)      $ Prints: 0
+
+$ Try to assign value to defined constant
+PI = 0          $ Error: Cannot re-assign the constant "PI" at line 8 column 0
+let tau = 17    $ Error: Cannot redeclare variable/constant "tau" at line 9 colum 0
+
+
+$ Declare function
+func myFunction(a) {
+  print(concat("Your happy number is: ", a))
+}
+
+myFunction(3.14)    $ Prints: "Your happy number is: 3.14"
+```
+
 #### fibonacci.cash
 Prints fibonacci sequence until first value after 1000
 ```
