@@ -59,7 +59,7 @@ class FunctionsImpl {
     return frame.returnValue;
   }
 
-  visitFuncStatementBlock(ctx, visitor) {
+  visitStatementBlock(ctx, visitor) {
     for (const k in ctx.children) {
       if (ctx.children[k].constructor.name === "Return_statementContext") {
         this.stack.peek().returnValue = visitor.visit(ctx.children[k])

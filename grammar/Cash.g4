@@ -18,7 +18,7 @@ assign_to_label : llabel=label OP_ASSIGN value=expr;
 
 comment : COMMENT | BLOCK_COMMENT;
 
-func_declaration : KW_FUNC name=label L_PAR args_l=args_decl_list R_PAR body=func_statement_block;
+func_declaration : KW_FUNC name=label L_PAR args_l=args_decl_list R_PAR body=statement_block;
 func_call : name=func_name L_PAR args_l=args_list R_PAR;
 return_statement : KW_RETURN val=expr;
 
@@ -49,10 +49,7 @@ op_logic:   (OP_AND | OP_OR);
 
 func_name: LABEL;
 
-statement_block : L_BRACE statement+ R_BRACE
-                | statement ;
-
-func_statement_block : L_BRACE (statement|return_statement)+ R_BRACE
+statement_block : L_BRACE (statement|return_statement)+ R_BRACE
                      | statement
                      | return_statement;
 

@@ -180,12 +180,6 @@ CashVisitor.prototype.visitStatement_block = function(ctx) {
 };
 
 
-// Visit a parse tree produced by CashParser#func_statement_block.
-CashVisitor.prototype.visitFunc_statement_block = function(ctx) {
-  return this.visitChildren(ctx);
-};
-
-
 // Visit a parse tree produced by CashParser#if_statement.
 CashVisitor.prototype.visitIf_statement = function(ctx) {
   return this.visitChildren(ctx);

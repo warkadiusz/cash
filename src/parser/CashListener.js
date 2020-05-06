@@ -263,15 +263,6 @@ CashListener.prototype.exitStatement_block = function(ctx) {
 };
 
 
-// Enter a parse tree produced by CashParser#func_statement_block.
-CashListener.prototype.enterFunc_statement_block = function(ctx) {
-};
-
-// Exit a parse tree produced by CashParser#func_statement_block.
-CashListener.prototype.exitFunc_statement_block = function(ctx) {
-};
-
-
 // Enter a parse tree produced by CashParser#if_statement.
 CashListener.prototype.enterIf_statement = function(ctx) {
 };
