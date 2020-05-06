@@ -41,8 +41,8 @@ between Javascript, Golang and bash.
 12. Full stack trace on error, with memory(variables and constants) dump.
 
 ## Future possibilities and ideas
-1. Real global context, without accessor functions `getGlobalVar(name)` and `setGlobalVar(name, value)`
-    (see [Standard library](#standard-library))
+1. ~~Real global context, without accessor functions `getGlobalVar(name)` and `setGlobalVar(name, value)`
+    (see [Standard library](#standard-library))~~ It's safer to not have global state.
 2. Syntactic sugar for arrays handling
 3. Variadic functions, eg. for `array()` constructor to predefine array values.
 4. Pass by reference
@@ -54,7 +54,7 @@ Interpreter comes with some built-in functions, available in all scopes(contexts
 in all interpreted scripts. Below you can find a description of all standard library functions
 
 ### General
-#### print(arg): true
+#### `print(arg): true`
 Prints arg parameter to stdout. Always returns true.  
 Examples:
 ```
@@ -62,7 +62,7 @@ print("a")
 print(3.14)
 print(var_name)
 ```
-#### exit(code)
+#### `exit(code)`
 Immediately stops execution and exits with provided code.  
 Examples:
 ```
@@ -71,7 +71,7 @@ exit(1)   $ error
 exit(myExitCode)
 ```
 
-#### concat(a, b): string
+#### `concat(a, b): string`
 Returns two variables concatenated as strings.  
 Examples:
 ```
@@ -81,7 +81,7 @@ const world = " world!"
 print(concat(hello, world)) $ Prints: "Hello world!"
 ```
 
-#### readLine(): string
+#### `readLine(): string`
 Waits for user input until new line character and returns entered text as string.  
 Examples:
 ```
@@ -90,7 +90,7 @@ let name = readLine()         $ Enter: Max
 print(concat("Hello ", name)) $ Prints: "Hello Max"
 ```
 
-#### call(funcName, data): mixed
+#### `call(funcName, data): mixed`
 Dynamically calls function by its name defined as `funcName` parameter. 
 Passes `data` variable to it as first and only argument. Returns value copied from
 called function.
@@ -105,7 +105,7 @@ let a = call("myPrint", "myText")   $ Prints: "MyPrint: myText"
 print(a)                            $ Prints: 8
 ```
 
-#### getGlobalVar(name): mixed
+#### `getGlobalVar(name): mixed`
 Returns value of the variable defined on the first stack level ("global scope").
 If variable with given name is not defined, throws undefined variable/constant error.   
 Examples:
@@ -119,7 +119,7 @@ func printGlobalA() {
 printGlobalA()  $ Prints: 3.14
 ```
 
-#### setGlobalVar(name): mixed
+#### `setGlobalVar(name): mixed`
 Sets value of the variable defined on the first stack level ("global scope"). 
 If variable with given name is not defined, throws undefined variable/constant error.  
 Examples:
@@ -135,7 +135,7 @@ print(a)          $ Prints: 6.28
 ```
 
 ### File system
-#### fileExists(filePath): true
+#### `fileExists(filePath): true`
 Returns information whether file under specified (absolute!) path exists or not.  
 Examples:
 ```
@@ -143,14 +143,14 @@ print(fileExists("/dev/stdout"))   $ true
 print(fileExists("/ddddddddd"))    $ false
 ```
 
-#### readFile(filePath): string
+#### `readFile(filePath): string`
 Reads file and returns its content as string.  
 Examples:
 ```
 print(readFile("/dev/zero")) $ 000000....
 ```
 
-#### writeFile(filePath, content): true
+#### `writeFile(filePath, content): true`
 Tries to write a content to the specified file. Throws to stderr on error.
 File must exist before write!    
 Examples:
@@ -159,7 +159,7 @@ writeFile("/tmp/a", "some content to write")
 ```
 
 ### Arrays/Hashmaps
-#### array(): array
+#### `array(): array`
 Constructor for array/hashmap type. Returns empty array.  
 Examples:
 ```
@@ -167,7 +167,7 @@ let myArray = array()
 print(array)   $ Prints: []
 ```
 
-#### arraySet(array, key, value): array
+#### `arraySet(array, key, value): array`
 Adds element to array/hashmap at specified key and returns new array.  
 Examples: 
 ```
@@ -177,7 +177,7 @@ myArray = arraySet(myArray, "test", 3)
 print(myArray)  $ Prints: {"test": 3}
 ```
 
-#### arrayGet(array, key): mixed
+#### `arrayGet(array, key): mixed`
 Returns element from array/hashmap at specified key. The key can be `int` in case of
 array or `string` in case of hashmap.    
 Examples: 
@@ -191,7 +191,7 @@ print(arrayGet(myArray, "test"))  $ Prints: 3
 print(arrayGet(myArray, 0))  $ Prints: 12
 ```
 
-#### arrayPush(array, value): array
+#### `arrayPush(array, value): array`
 Adds new value to the array and returns new array.  
 Examples:
 ```
@@ -201,7 +201,7 @@ myArray = arrayPush(myArray, "test");
 print(myArray) $ Prints: ["test"]
 ```
 
-#### arraySize(array): int
+#### `arraySize(array): int`
 Returns the size of the specified array.  
 Examples:
 ```
