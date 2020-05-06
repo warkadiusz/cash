@@ -53,4 +53,23 @@ StdLib.functions["writeFile"] = new Function("writeFile", ["path", "contents"], 
   }
 });
 
+StdLib.functions["array"] = new Function("array", [], function() {
+  StdLib.setReturnValue([])
+});
+
+StdLib.functions["arraySet"] = new Function("arraySet", ["arr", "key", "val"], function() {
+  const arr = StdLib.getValue("arr");
+  const key = StdLib.getValue("key");
+
+  arr[key] = StdLib.getValue("val");
+
+  StdLib.setReturnValue(arr);
+});
+
+StdLib.functions["arrayGet"] = new Function("arrayGet", ["arr", "key"], function(){
+  const arr = StdLib.getValue("arr");
+  const key = StdLib.getValue("key");
+  StdLib.setReturnValue(arr[key])
+});
+
 module.exports = StdLib;
