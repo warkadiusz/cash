@@ -1,5 +1,6 @@
-const Function = require('../misc/BuiltInFunction');
 const RuntimeError = require("../misc/RuntimeError");
+const Function = require('../misc/BuiltInFunction');
+const readlineSync = require('readline-sync');
 const fs = require("fs");
 
 const StdLib = {
@@ -72,11 +73,22 @@ StdLib.functions["arrayGet"] = new Function("arrayGet", ["arr", "key"], function
   StdLib.setReturnValue(arr[key]);
 });
 
+StdLib.functions["arrayPush"] = new Function("arrayPush", ["arr", "val"], function () {
+  const arr = StdLib.getValue("arr");
+  const val = StdLib.getValue("val");
+  arr.push(val)
+  StdLib.setReturnValue(arr);
+})
+
 StdLib.functions["concat"] = new Function("concat", ["a", "b"], function () {
   const a = StdLib.getValue("a");
   const b = StdLib.getValue("b");
 
   StdLib.setReturnValue(a + "" + b)
-})
+});
+
+StdLib.functions["readLine"] = new Function("readLine", [], function () {
+  StdLib.setReturnValue(readlineSync.question())
+});
 
 module.exports = StdLib;

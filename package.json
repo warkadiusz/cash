@@ -1,0 +1,27 @@
+{
+  "name": "gram",
+  "version": "1.0.0",
+  "description": "Jezyki formalne i kompilatory - projekt",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "antlr4": "^4.8.0",
+    "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/warkadiusz/jfik.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/warkadiusz/jfik/issues"
+  },
+  "homepage": "https://github.com/warkadiusz/jfik#readme"
+}
