@@ -81,3 +81,14 @@ createEvent("aaa")
 onEvent("aaa", "printMy")
 triggerEvent("aaa", "");
 $/
+
+func fibb(prev2, prev) {
+    const next = prev2+prev
+    print(next)
+
+    if next < 1000 {
+        fibb(prev, next)
+    }
+}
+
+fibb(1,1)

@@ -24,14 +24,6 @@ StdLib.functions["print"] = new Function("print", ["msg"], function () {
   console.log(StdLib.getValue("msg"));
 });
 
-StdLib.functions["add"] = new Function("add", ["a", "b"], function () {
-  StdLib.setReturnValue(StdLib.getValue("a") + StdLib.getValue("b"));
-});
-
-StdLib.functions["sub"] = new Function("sub", ["a", "b"], function () {
-  StdLib.setReturnValue(StdLib.getValue("a") - StdLib.getValue("b"));
-});
-
 StdLib.functions["exit"] = new Function("exit", ["code"], function () {
   process.exit(StdLib.getValue("code"));
 });
